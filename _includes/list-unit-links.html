@@ -1,0 +1,52 @@
+{% assign source = include.source %}
+{% assign cols = include.cols %}
+{% assign sort = include.sort | default: nil %}
+
+{% if source and source.size > 0 %}
+    {% assign units = "" | split: "" %}
+    {% for item in source %}
+        {% if item.id %}
+            {% assign match = site.data.units | where: "id", item.id | first %}
+        {% else %}
+            {% assign match = site.data.units | where: "id", item | first %}
+        {% endif %}
+        {% if match and match.visible %}
+            {% assign units = units | push: match %}
+        {% endif %}
+    {% endfor %}
+
+    {% if sort %}
+        {% assign units = units | sort_natural: sort %}
+    {% else %}
+        {% if sort != "none" %}
+            {% assign units = units | sort_natural: name %}
+        {% endif %}
+    {% endif %}
+
+    <div class="columns is-multiline">
+        {% for unit in units %}
+            {% assign currentLink = source | where: "id", unit.id | first %}
+
+            {% if currentLink and currentLink.size > 0 %}
+                <div class="column is-{% if cols %}{{ cols }}{% else %}one-fifth{% endif %}-desktop is-4-tablet">
+                    <a href="{{ currentLink.url | prepend: unit.website }}">
+                        <div class="card unit">
+                            {% if unit.logo %}
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="/assets/images/institutional/{{ unit.logo }}" alt="{{ unit.name }}" />
+                                    </figure>
+                                </div>
+                            {% endif %}
+                            <div class="card-content">
+                                {% if unit.name %}<p class="title is-spaced is-5">{{ unit.name }}</p>{% endif %}
+                                {% if unit.acronym %}<p class="subtitle acronym is-4">{{ unit.acronym }}</p>{% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,103 @@
+---
+layout: default
+---
+
+{% assign filter_data = nil %}
+{% assign filter_title = nil %}
+{% if page.filter_units %}
+    {% assign filter_data = site.data.units | where: "visible", true | sort_natural: acronym %}
+    {% assign filter_title = "Filter by Involved Unit" %}
+{% elsif page.filter_tags %}
+    {% assign filter_data = site.data.tags %}
+    {% assign filter_title = "Filter by Topic" %}
+{% endif %}
+
+<div class="content">
+    <div class="columns is-multiline">
+        <div id="notification-referrer" class="notification hidden" style="width: 100%;">
+            <button class="delete notification-dismiss" data-ref="notification-referrer"></button>
+            You have been addressed here from one of the Units' websites. <a href="">Go back</a>.
+        </div>
+
+        {% if filter_data %}
+            <div class="column is-12">
+                <div class="filters">
+                    <h2 class="no-toc">{{ filter_title }}</h2>
+                    {%- for tag in filter_data -%}
+                        <span class="filter filter-tag tag tag-{{ tag.id }}" data-id-tag="{{ tag.id }}" style="background-color: {{ tag.color | default: 'default' }};">
+                            <b>{{ tag.text | default: tag.acronym | default: "" }}</b>
+                        </span>
+                    {%- endfor -%}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="column is-12">
+            {{ content }}
+        </div>
+
+        {% if page.images.size > 0 %}
+            <div class="column images is-12">
+                <h1 id="related-images" class="related in-toc">Images</h1>
+                {% include list-images.html source=page.images %}
+            </div>
+        {% endif %}
+
+        {% if page.tools.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-tools" class="related in-toc">Related Tools</h1>
+                {% include list-tools.html source=page.tools style="list" %}
+            </div>
+        {% endif %}
+
+        {% if page.events.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-events" class="related in-toc">Related Events</h1>
+                {% include list-events.html source=page.events %}
+            </div>
+        {% endif %}
+
+        {% if page.projects.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-projects" class="related in-toc">Related Project</h1>
+                {% include list-projects.html source=page.projects style="list" %}
+            </div>
+        {% endif %}
+
+        {% if page.collaborations.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-collaborations" class="related in-toc">Related Collaborations</h1>
+                {% include list-collaborations.html source=page.collaborations style="list" %}
+            </div>
+        {% endif %}
+
+        {% if page.publications.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-publications" class="related in-toc">Related Publications</h1>
+                {% include list-publications.html source=page.publications %}
+            </div>
+        {% endif %}
+
+        {% if page.disseminations.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-disseminations" class="related in-toc">Related Disseminations</h1>
+                {% include list-dissemination.html source=page.disseminations style="list" %}
+            </div>
+        {% endif %}
+
+        {% if page.theses.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-theses" class="related in-toc">Related Theses</h1>
+                {% include list-theses.html source=page.theses %}
+            </div>
+        {% endif %}
+
+        {% if page.people.size > 0 %}
+            <div class="column is-12">
+                <h1 id="related-people" class="related in-toc">Involved People</h1>
+                {% assign details = "picture, email, phone, personalPage, website" | split: ", " %}
+                {% include list-people.html source=page.people style="card" details=details sort=page.peopleOrder %}
+            </div>
+        {% endif %}
+    </div>
+</div>

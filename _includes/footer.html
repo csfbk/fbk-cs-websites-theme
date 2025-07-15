@@ -1,0 +1,74 @@
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column has-text-centered is-3-desktop is-3-tablet is-hidden-mobile">
+                {% if site.entity_type == "unit" and site.logos.unit %}
+                    <img class="logo" src="{{ site.logos.unit.regular.default }}" />
+                {% elsif site.entity_type == "center" %}
+                    <img class="logo" src="/assets/images/institutional/CS_regular.png" />
+                {% endif %}
+            </div>
+
+            <div class="column has-text-centered is-6-desktop is-6-tablet is-12-mobile">
+                <div class="content is-small has-text-centered privacy-policy">
+                    <a href="https://www.fbk.eu/it/privacy-cookie/" class="link">Privacy and Cookie Policy</a>
+                </div>
+            
+                <div class="content is-small has-text-centered company-data">
+                    {% if site.entity_type == "unit" %}
+                        <p class="">{{ site.organization.unit.name | default: "Research Unit" }}</p>
+                        <p class="">{{ site.organization.center.name | default: "Research Center" }}</p>
+                    {% elsif site.entity_type == "center" %}
+                        <p class="">{{ site.organization.center.name | default: "Research Center" }}</p>
+                    {% endif %}
+                    <p class=""><a href="https://www.fbk.eu">Fondazione Bruno Kessler</a></p>
+                    <p class="">Via Sommarive, 18</p>
+                    <p class="">38123 Povo, Trento, Italy</p>
+                </div>
+
+                <div class="content is-small has-text-centered content-manager">
+                    <p class=""><b>Content Manager:</b></p>
+                    <p class="">{{ site.content-manager.name | default: "Content Manager Name" }}</p>
+                    <p class="">{{ site.content-manager.affiliation | default: "Research Unit" }}</p>
+                    <p class="">Phone: {{ site.content-manager.phone | default: "Content Manager Phone" }}</p>
+                    <p class="">Email: {{ site.content-manager.email | default: "Content Manager Email" }}</p>
+                </div>
+
+                {% include follow.html %}
+
+                <div class="content is-small has-text-centered disclaimer">
+                    <p><i>This publication was made possible with the support of the Autonomous Province of Trento. The use of content protected by intellectual property rights is conducted in accordance with the provisions of Articles 2, 21, and 33 of the Constitution, as well as Article 70 of the Copyright Law.</i></p>
+                </div>
+
+                <div class="content is-small has-text-centered">
+                    <p class="">Theme built by <a href="https://www.csrhymes.com">C.S. Rhymes</a></p>
+                </div>
+            </div>
+
+            <div class="column has-text-centered is-3-desktop is-3-tablet is-hidden-mobile">
+                {% if site.entity_type == "unit" %}
+                    <img class="logo" src="/assets/images/institutional/CS_regular.png" />
+                {% endif %}
+            </div>
+
+            <div class="column has-text-centered is-12-mobile is-hidden-tablet">
+                <div class="columns is-multiline is-mobile">
+                    {% if site.entity_type == "unit" and site.logos.unit %}
+                        <div class="column has-text-centered is-12-mobile">
+                            <img class="logo" src="{{ site.logos.unit.regular.default }}" />
+                        </div>
+                    {% elsif site.entity_type == "center" %}
+                        <div class="column has-text-centered is-12-mobile">
+                            <img class="logo" src="/assets/images/institutional/CS_regular.png" />
+                        </div>
+                    {% endif %}
+                    {% if site.entity_type == "unit" %}
+                        <div class="column has-text-centered is-12-mobile">
+                            <img class="logo" src="/assets/images/institutional/CS_regular.png" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
