@@ -4,26 +4,26 @@
     x-data="{ openNav: false }"
 >
     <div class="container">
-        {% if site.show_navbar_brand %}
-            <div class="navbar-brand">
+        <div class="navbar-brand">
+            {% if site.show_navbar_brand %}
                 <a href="{{ site.baseurl }}/" class="navbar-item">
                     {{ site.title }}
                 </a>
-                <a
-                    role="button"
-                    class="navbar-burger burger"
-                    aria-label="menu"
-                    aria-expanded="false"
-                    data-target="navMenu"
-                    :class="{ 'is-active': openNav }"
-                    x-on:click="openNav = !openNav"
-                >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-        {% endif %}
+            {% endif %}
+            <a
+                role="button"
+                class="navbar-burger burger"
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navMenu"
+                :class="{ 'is-active': openNav }"
+                x-on:click="openNav = !openNav"
+            >
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
         <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
             <div class="navbar-start">
                 <a href="{{ site.baseurl }}/" class="navbar-item {% if page.url == "/" %}is-active{% endif %}">Home</a>
@@ -63,8 +63,9 @@
             <div class="navbar-end">
                 {% include follow-header.html %}
                 {% if site.show_link_fbk %}
-                    <a class="navbar-item" href="https://www.fbk.eu/en/">
-                        <img src="/assets/images/institutional/FBK_regular_white.png" />
+                    <a class="navbar-item fbk-header" href="https://www.fbk.eu/en/">
+                        <img class="fbk-header-regular" src="/assets/images/institutional/FBK_regular.png" />
+                        <img class="fbk-header-white" src="/assets/images/institutional/FBK_regular_white.png" />
                     </a>
                 {% endif %}
             </div>

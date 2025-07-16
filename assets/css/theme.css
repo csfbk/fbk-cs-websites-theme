@@ -1130,3 +1130,23 @@ table.program td p.location::before {
   font-weight: 600;
   line-height: 1.125;
 }
+
+/* NAVBAR HEADER */
+.navbar-end > .navbar-item.fbk-header .fbk-header-regular {
+  display: block;
+}
+
+.navbar-end > .navbar-item.fbk-header .fbk-header-white {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-end > .navbar-item.fbk-header .fbk-header-regular {
+    display: none;
+  }
+
+  .navbar-end > .navbar-item.fbk-header .fbk-header-white {
+    display: block;
+  }
+}
+/* END NAVBAR HEADER */
