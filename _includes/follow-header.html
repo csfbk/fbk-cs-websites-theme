@@ -1,0 +1,58 @@
+{% if site.social %}
+    {% if site.social.facebook %}
+        <a href="{{ site.social.facebook }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-facebook fa-fw"></i>
+                <span class="is-sr-only">Facebook</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.github %}
+        <a href="{{ site.social.github }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-github fa-fw"></i>
+                <span class="is-sr-only">Github</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.instagram %}
+        <a href="{{ site.social.instagram }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-instagram fa-fw"></i>
+                <span class="is-sr-only">Instagram</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.threads %}
+        <a href="{{ site.social.threads }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-threads fa-fw"></i>
+                <span class="is-sr-only">Threads</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.tiktok %}
+        <a href="{{ site.social.tiktok }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-tiktok fa-fw"></i>
+                <span class="is-sr-only">TikTok</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.x %}
+        <a href="{{ site.social.x }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-x-twitter fa-fw"></i>
+                <span class="is-sr-only">X/Twitter</span>
+            </span>
+        </a>
+    {% endif %}
+    {% if site.social.youtube %}
+        <a href="{{ site.social.youtube }}" class="navbar-item">
+            <span class="icon">
+                <i class="fa-brands fa-youtube fa-fw"></i>
+                <span class="is-sr-only">YouTube</span>
+            </span>
+        </a>
+    {% endif %}
+{% endif %}
