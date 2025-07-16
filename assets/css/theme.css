@@ -1028,7 +1028,7 @@ table.program td p.location::before {
 @media (prefers-color-scheme: dark) {
   body,
   .menu a {
-    color: hsl(221deg, 14%, 71%) !important;
+    color: var(--text-color) !important;
   }
 
   section {
@@ -1070,7 +1070,7 @@ table.program td p.location::before {
 
   .card {
     background-color: hsl(221, 14%, 9%) !important;
-    color: hsl(221deg, 14%, 71%) !important;
+    color: var(--text-color) !important;
     box-shadow: 0 .5em 1em -0.125em rgba(225, 225, 225, 0.1),0 0px 0 1px rgba(225, 225, 225, .02);
   }
 
@@ -1079,7 +1079,7 @@ table.program td p.location::before {
   }
 
   .card .subtitle {
-    color: hsl(221deg, 14%, 71%) !important;
+    color: var(--text-color) !important;
   }
 
   hr {

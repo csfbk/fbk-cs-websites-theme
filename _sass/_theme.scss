@@ -43,6 +43,7 @@ $navbar-separator-dark: darken($primary-dark, 5%);
   --bulma-hero-background-l: #{$primary-l};
   --link-color: #{$primary};
   --navbar-separator: #{$navbar-separator};
+  --text-color: #4a4a4a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,7 +52,8 @@ $navbar-separator-dark: darken($primary-dark, 5%);
     --bulma-hero-h: #{$primary-h};
     --bulma-hero-s: #{$primary-dark-s};
     --bulma-hero-background-l: #{$primary-dark-l};
-    --link-color: #{$primary-dark};
+    --link-color: var(--text-color);
     --navbar-separator: #{$navbar-separator-dark};
+    --text-color: hsl(221deg, 14%, 71%);
   }
 }
