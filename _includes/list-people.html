@@ -2,6 +2,7 @@
 {% assign details = include.details | default: "" %}
 {% assign sort = include.sort | default: "name" %}
 {% assign style = include.style | default: "card" %}
+{% assign cols = include.cols %}
 
 {% if source and source.size > 0 %}
 <div class="columns is-multiline">
@@ -213,7 +214,7 @@
         {% endif %}
 
         {% if style == "card" %}
-            <div class="column is-one-fifth-desktop is-4-tablet">
+            <div class="column is-{% if cols %}{{ cols }}{% else %}one-fifth{% endif %}-desktop is-4-tablet">
                 <div class="card person">
                     {% if details contains "picture" %}
                         {% capture personImage %}
