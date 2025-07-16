@@ -85,23 +85,10 @@ function appendReferrerURI(link) {
 }
 
 // CODE
-// Open links to FBK websites in same tab
 // Open external links in a new tab
 $('a').each(function () {
-  var centerURL = $("#center_url").text().trim().replace(/^(https?:\/\/)/i, '');
-  
   var a = new RegExp('/' + window.location.host + '/');
-  var c = new RegExp('/' + centerURL + '/');
-  var f = new RegExp('/' + 'www.fbk.eu' + '/');
-
-  if (centerURL != "" && c.test(this.href)) {
-    $(this).click(function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      var linkReferred = appendReferrerURI(this.href);
-      location.href = linkReferred;
-    });
-  } else if (!a.test(this.href) && !f.test(this.href) && this.href != "" && this.href != "#") {
+  if (!a.test(this.href) && this.href != "" && this.href != "#") {
     $(this).click(function (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -238,7 +225,6 @@ if ($("ul.publications").length > 0) {
 const urlReferrerParameter = getURLParameter("referrer");
 if (urlReferrerParameter !== null) {
   const urlReferrer = urlReferrerParameter[0];
-  console.log("Referrer URL parameter detected: " + urlReferrer);
 
   $("#notification-referrer a").attr("href", urlReferrer);
   $("#notification-referrer").removeClass("hidden");
