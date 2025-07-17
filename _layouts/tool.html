@@ -24,13 +24,13 @@ layout: page
             {% if checkURL.size > 0 and checkURL[0] == "" %}
                 <img class="logo pull-right" src="{{ tool.logo }}" />
             {% else %}
-                <img class="logo pull-right" src="/assets/areas/projects/{{ tool.logo }}" />
+                <img class="logo pull-right" src="/assets/areas/tools/{{ tool.logo }}" />
             {% endif %}
         {% endif %}
         {{ content }}
     </div>
 
-    {% if site.entity_type == "center" and project.url.units %}
+    {% if site.entity_type == "center" and tool.url.units %}
         <div class="column units-details is-12">
             <h1 id="title-units-details">Details on the Units' Websites</h1>
             {% include list-unit-links.html source=tool.urlDocumentation.units %}
