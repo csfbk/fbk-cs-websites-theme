@@ -74,9 +74,9 @@
                                 {% if tool.logo %}
                                     {% assign checkURL = tool.logo | split: "http" %}
                                     {% if checkURL.size > 0 and checkURL[0] == "" %}
-                                        <img src="{{ tool.logo }}" alt="{{ project.title }}">
+                                        <img src="{{ tool.logo }}" alt="{{ tool.name }}">
                                     {% else %}
-                                        <img src="/assets/areas/projects/{{ tool.logo }}" alt="{{ project.title }}">
+                                        <img src="/assets/areas/tools/{{ tool.logo }}" alt="{{ tool.name }}">
                                     {% endif %}
                                 {% else %}
                                     <img class="default" alt="{{ tool.name }}">
