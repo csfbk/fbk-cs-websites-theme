@@ -1,3 +1,6 @@
+{% assign cols = include.cols | default: "one-quarter" %}
+{% assign sort = include.sort | default: "title" %}
+{% assign sortReverse = include.sortReverse | default: false %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
 
@@ -14,7 +17,12 @@
         {% endif %}
     {% endfor %}
 
-    {% assign projects = projects | sort_natural: "title" %}
+    {% if sort != "none" %}
+        {% assign projects = projects | sort_natural: sort %}
+        {% if sortReverse %}
+            {% assign projects = projects | reverse %}
+        {% endif %}
+    {% endif %}
 
     <div class="columns is-multiline">
         {% if style == "list" %}
@@ -43,7 +51,7 @@
             {% endif %}
 
             {% if style == "card" %}
-                <div class="column is-3-desktop is-4-tablet project" data-tags="{{ project.units | join: "|" }}">
+                <div class="column project is-full-mobile is-half-tablet is-{{ cols }}-desktop" data-tags="{{ project.units | join: "|" }}">
                     {% if url %}
                     <a href="{{ url }}">
                     {% endif %}

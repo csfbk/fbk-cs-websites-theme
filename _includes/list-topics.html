@@ -1,5 +1,6 @@
-{% assign source = include.source %}
 {% assign sort = include.sort | default: "order" %}
+{% assign sortReverse = include.sortReverse | default: false %}
+{% assign source = include.source %}
 
 {% if source and source.size > 0 %}
 {% assign topics = "" | split: "" %}
@@ -16,6 +17,9 @@
 
 {% if sort != "none" %}
     {% assign topics = topics | sort_natural: sort %}
+    {% if sortReverse %}
+        {% assign topics = topics | reverse %}
+    {% endif %}
 {% endif %}
 
 <div class="columns is-multiline">

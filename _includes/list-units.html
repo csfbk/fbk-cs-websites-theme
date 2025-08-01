@@ -1,6 +1,7 @@
-{% assign source = include.source %}
-{% assign sort = include.sort %}
 {% assign cols = include.cols %}
+{% assign sort = include.sort %}
+{% assign sortReverse = include.sortReverse | default: false %}
+{% assign source = include.source %}
 
 {% if source and source.size > 0 %}
 {% assign units = "" | split: "" %}
@@ -16,11 +17,14 @@
 {% endfor %}
 
 {% if sort %}
-    {% assign units = units | sort_natural: sort %}
-{% else %}
     {% if sort != "none" %}
-        {% assign units = units | sort_natural: name %}
+        {% assign units = units | sort_natural: sort %}
+        {% if sortReverse %}
+            {% assign units = units | reverse %}
+        {% endif %}
     {% endif %}
+{% else %}
+    {% assign units = units | sort_natural: name %}
 {% endif %}
 
 <div class="columns is-multiline">
