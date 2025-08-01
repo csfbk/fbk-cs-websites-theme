@@ -3,7 +3,9 @@ layout: page
 show_sidebar: false
 ---
 
-{% assign style = page.style | default: "card" %}
+{% assign sort = page.sort | default: "startDate" %}
+{% assign sortNatural = page.sortNatural | default: false %}
+{% assign sortReverse = page.sortReverse | default: true %}
 
 <div class="columns is-multiline collaborations">
     <div class="column is-12">
@@ -13,23 +15,23 @@ show_sidebar: false
     <div class="column is-12">
         {% if site.data.events %}
             {% assign todayDate = 'now' | date: '%Y-%m-%d' %}
-            {% assign currentEvents = site.data.events | where_exp: "event", "event.startDate <= todayDate" | where_exp: "event", "event.endDate >= todayDate" | sort: "startDate" | reverse %}
-            {% assign incomingEvents = site.data.events | where_exp: "event", "event.startDate > todayDate" | sort: "startDate" | reverse %}
-            {% assign pastEvents = site.data.events | where_exp: "event", "event.endDate < todayDate" | sort: "startDate" | reverse %}
+            {% assign currentEvents = site.data.events | where_exp: "event", "event.startDate <= todayDate" | where_exp: "event", "event.endDate >= todayDate" %}
+            {% assign incomingEvents = site.data.events | where_exp: "event", "event.startDate > todayDate" %}
+            {% assign pastEvents = site.data.events | where_exp: "event", "event.endDate < todayDate" %}
             
             {% if currentEvents.size > 0 %}
                 <h1>Ongoing Events</h1>
-                {% include list-events.html source=currentEvents %}
+                {% include list-events.html source=currentEvents sort=sort sortNatural=sortNatural sortReverse=sortReverse %}
             {% endif %}        
 
             {% if incomingEvents.size > 0 %}
                 <h1>Incoming Events</h1>
-                {% include list-events.html source=incomingEvents %}
+                {% include list-events.html source=incomingEvents sort=sort sortNatural=sortNatural sortReverse=sortReverse %}
             {% endif %}        
 
             {% if pastEvents.size > 0 %}
                 <h1>Past Events</h1>
-                {% include list-events.html source=pastEvents %}
+                {% include list-events.html source=pastEvents sort=sort sortNatural=sortNatural sortReverse=sortReverse %}
             {% endif %}
         {% endif %}
     </div>

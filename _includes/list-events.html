@@ -1,3 +1,6 @@
+{% assign sort = include.sort | default: "startDate" %}
+{% assign sortNatural = include.sortNatural | default: false %}
+{% assign sortReverse = include.sortReverse | default: true %}
 {% assign source = include.source %}
 
 {% if source and source.size > 0 %}
@@ -13,7 +16,16 @@
         {% endif %}
     {% endfor %}
 
-    {% assign events = events | sort_natural: "startDate" | reverse %}
+    {% if sort != "none" %}
+        {% if sortNatural %}
+            {% assign events = events | sort_natural: sort %}
+        {% else %}
+            {% assign events = events | sort: sort %}
+        {% endif %}
+        {% if sortReverse %}
+            {% assign events = events | reverse %}
+        {% endif %}
+    {% endif %}   
 
     <div class="events">
         <ul>
