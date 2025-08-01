@@ -1,6 +1,7 @@
 {% assign cols = include.cols | default: "one-quarter" %}
 {% assign details = include.details | default: "" %}
 {% assign sort = include.sort | default: "name" %}
+{% assign sortNatural = include.sortNatural | default: true %}
 {% assign sortReverse = include.sortReverse | default: false %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
@@ -20,7 +21,11 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign tools = tools | sort_natural: sort %}
+        {% if sortNatural %}
+            {% assign tools = tools | sort_natural: sort %}
+        {% else %}
+            {% assign tools = tools | sort: sort %}
+        {% endif %}
         {% if sortReverse %}
             {% assign tools = tools | reverse %}
         {% endif %}

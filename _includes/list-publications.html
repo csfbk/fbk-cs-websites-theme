@@ -1,6 +1,7 @@
 {% assign allowFiltering = include.allowFiltering | default: false %}
 {% assign show_tags = site.show_publication_tags | default: false %}
 {% assign sort = include.sort | default: "title" %}
+{% assign sortNatural = include.sortNatural | default: true %}
 {% assign sortReverse = include.sortReverse | default: false %}
 {% assign source = include.source %}
 
@@ -19,7 +20,11 @@
 
 {% if sort %}
     {% if sort != "none" %}
-        {% assign publications = publications | sort_natural: sort %}
+        {% if sortNatural %}
+            {% assign publications = publications | sort_natural: sort %}
+        {% else %}
+            {% assign publications = publications | sort: sort %}
+        {% endif %}
         {% if sortReverse %}
             {% assign publications = publications | reverse %}
         {% endif %}

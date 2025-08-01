@@ -1,4 +1,5 @@
 {% assign sort = include.sort | default: "title" %}
+{% assign sortNatural = include.sortNatural | default: true %}
 {% assign sortReverse = include.sortReverse | default: false %}
 {% assign source = include.source %}
 
@@ -16,7 +17,11 @@
 {% endfor %}
 
 {% if sort != "none" %}
-    {% assign topics = topics | sort_natural: sort %}
+    {% if sortNatural %}
+        {% assign topics = topics | sort_natural: sort %}
+    {% else %}
+        {% assign topics = topics | sort: sort %}
+    {% endif %}
     {% if sortReverse %}
         {% assign topics = topics | reverse %}
     {% endif %}

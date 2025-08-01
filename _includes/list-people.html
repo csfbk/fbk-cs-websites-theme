@@ -1,6 +1,7 @@
 {% assign cols = include.cols | default: "one-fifth" %}
 {% assign details = include.details | default: "" %}
 {% assign sort = include.sort | default: "name" %}
+{% assign sortNatural = include.sortNatural | default: true %}
 {% assign sortReverse = include.sortReverse | default: false %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
@@ -29,7 +30,11 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign people = people | sort_natural: sort %}
+        {% if sortNatural %}
+            {% assign people = people | sort_natural: sort %}
+        {% else %}
+            {% assign people = people | sort: sort %}
+        {% endif %}
         {% if sortReverse %}
             {% assign people = people | reverse %}
         {% endif %}
