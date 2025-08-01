@@ -44,8 +44,11 @@ layout: default
                     </div>
                 {% endif %}
 
-                {% if content and content != "" %}
-                    <section class="contains-bio">{{ content }}</section>
+                {% assign strippedContent = content | strip %}
+                {% if strippedContent.size > 0 %}
+                    <section class="contains-bio">
+                        {{ strippedContent }}
+                    </section>
                 {% endif %}
 
                 <div id="toc"></div>
