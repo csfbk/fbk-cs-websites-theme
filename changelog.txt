@@ -1,2 +1,9 @@
-# 0.1
+# 0.2.0
+* Display social links in header
+* Add cols parameter in list-people include
+* Fix navbar to display toggle button from mobile devices
+* Add config parameter show_tags to show publication tags
+* Fix tool layout and list-tools include (typo project -> tool)
+
+# 0.1.0
 * Initial release
