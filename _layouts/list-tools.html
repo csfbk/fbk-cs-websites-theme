@@ -1,0 +1,26 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign cols = page.cols | default: "one-quarter" %}
+{% assign details = page.details | default: "description" %}
+{% assign sort = page.sort | default: "name" %}
+{% assign sortReverse = page.sortReverse | default: false %}
+{% assign style = page.style | default: "card" %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.tools %}
+            {% assign tools = site.data.tools | sort_natural: "name" %}
+
+            {% if tools.size > 0 %}
+                {% include list-tools.html source=tools cols=cols details=details sort=sort sortReverse=sortReverse style=style %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

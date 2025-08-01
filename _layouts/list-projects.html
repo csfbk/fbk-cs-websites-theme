@@ -1,0 +1,35 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign cols = page.cols | default: "one-quarter" %}
+{% assign sort = page.sort | default: "name" %}
+{% assign sortReverse = page.sortReverse | default: false %}
+{% assign style = page.style | default: "card" %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.projects %}
+            {% assign todayDate = 'now' | date: '%Y-%m-%d' %}
+            {% assign currentProjectsWithoutEnd = site.data.projects | where_exp: "project", "project.endDate == nil" %}
+            {% assign currentProjectsWithEnd = site.data.projects | where_exp: "project", "project.endDate >= todayDate" %}
+            {% assign currentProjects = currentProjectsWithoutEnd | concat: currentProjectsWithEnd %}
+            {% assign formerProjects = site.data.projects | where_exp: "project", "project.endDate < todayDate" %}
+
+            {% if currentProjects.size > 0 %}
+                <h1>Current Projects</h1>
+                {% include list-projects.html source=currentProjects cols=cols sort=sort sortReverse=sortReverse style=style %}
+            {% endif %}
+
+            {% if formerProjects.size > 0 %}
+                <h1>Former Projects</h1>
+                {% include list-projects.html source=formerProjects cols=cols sort=sort sortReverse=sortReverse style=style %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

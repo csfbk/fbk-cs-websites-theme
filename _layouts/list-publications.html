@@ -1,0 +1,27 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign sort = page.sort | default: "title" %}
+{% assign sortReverse = page.sortReverse | default: false %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.publications %}
+            {% assign publicationsByYear = site.data.publications | where_exp: "publication", "publication.id_iris != nil" | group_by: "year" | sort: "name" | reverse %}
+
+            {% for year in publicationsByYear %}
+                <h1>{{ year.name }} <small>({{ year.items.size }})</small></h1>
+
+                {% if year.items.size > 0 %}
+                    {% include list-publications.html source=year.items sort=sort sortReverse=sortReverse %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
