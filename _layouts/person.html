@@ -20,12 +20,13 @@ layout: default
         {% assign contactsAvailable = true %}
     {% endif %}
 
-    {% assign roleST = "Collaborator" %}
+    {% assign roleFBK = "Collaborator" %}
+    {% assign affiliationsCS = "Center for Cybersecurity,AppLiEd cryptograPHy,Distributed AI for dependable cyberSecuritY,Secure code liFEcycle for applications and netWoRking,Security & Trust" | split: "," %}
     {% if person.affiliations %}
         {% for affiliation in person.affiliations %}
             {% if affiliation.institution == "Fondazione Bruno Kessler" %}
-                {% if affiliation.unit == "Security & Trust" or affiliation.unit == "Center for Cybersecurity" %}
-                    {% assign roleST = affiliation.role %}
+                {% if affiliationsCS contains affiliation.unit %}
+                    {% assign roleFBK = affiliation.role %}
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -33,7 +34,7 @@ layout: default
 
     <div class="content single-fbkperson">
         <span id="set-title">{{ person.name }} {{ person.surname }}</span>
-        <span id="set-subtitle">{{ roleST }}</span>
+        <span id="set-subtitle">{{ roleFBK }}</span>
 
         <div class="columns is-multiline reverse-columns">
             <div class="column is-8-tablet is-9-desktop">
