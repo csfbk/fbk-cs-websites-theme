@@ -4,8 +4,8 @@ show_sidebar: false
 ---
 
 {% assign sort = page.sort | default: "name" %}
-{% assign sortNatural = page.sortNatural | default: true %}
-{% assign sortReverse = page.sortReverse | default: false %}
+{% assign sort_natural = page.sort_natural | default: true %}
+{% assign sort_reverse = page.sort_reverse | default: false %}
 {% assign style = page.style | default: "table" %}
 
 <div class="columns is-multiline collaborations">
@@ -35,7 +35,7 @@ show_sidebar: false
             {% if courses_BSc_MSc.size > 0 %}
                 <section class="teaching-section bsc-msc-courses">
                     <h2>Bachelor's and Master's Courses</h2>
-                    {% include list-teaching.html source=courses_BSc_MSc sort=sort sortNatural=sortNatural sortReverse=sortReverse style=style %}
+                    {% include list-teaching.html source=courses_BSc_MSc sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
             {% endif %}
 
@@ -43,7 +43,7 @@ show_sidebar: false
             {% if courses_PhD.size > 0 %}
                 <section class="teaching-section phd-courses">
                     <h2>PhD Courses</h2>
-                    {% include list-teaching.html source=courses_PhD sort=sort sortNatural=sortNatural sortReverse=sortReverse style=style %}
+                    {% include list-teaching.html source=courses_PhD sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
             {% endif %}
 
@@ -51,7 +51,7 @@ show_sidebar: false
             {% if courses_highSchools.size > 0 %}
                 <section class="teaching-section high-school-courses">
                     <h2>High School Courses</h2>
-                    {% include list-teaching.html source=courses_highSchools sort=sort sortNatural=sortNatural sortReverse=sortReverse style=style %}
+                    {% include list-teaching.html source=courses_highSchools sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
             {% endif %}
 
@@ -59,7 +59,7 @@ show_sidebar: false
             {% if courses_other.size > 0 %}
                 <section class="teaching-section other-courses">
                     <h2>Other Courses</h2>
-                    {% include list-teaching.html source=courses_other sort=sort sortNatural=sortNatural sortReverse=sortReverse style=style %}
+                    {% include list-teaching.html source=courses_other sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
             {% endif %}
         {% endif %}

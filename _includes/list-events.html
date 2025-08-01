@@ -1,6 +1,6 @@
 {% assign sort = include.sort | default: "startDate" %}
-{% assign sortNatural = include.sortNatural | default: false %}
-{% assign sortReverse = include.sortReverse | default: true %}
+{% assign sort_natural = include.sort_natural | default: false %}
+{% assign sort_reverse = include.sort_reverse | default: true %}
 {% assign source = include.source %}
 
 {% if source and source.size > 0 %}
@@ -17,12 +17,12 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% if sortNatural %}
+        {% if sort_natural %}
             {% assign events = events | sort_natural: sort %}
         {% else %}
             {% assign events = events | sort: sort %}
         {% endif %}
-        {% if sortReverse %}
+        {% if sort_reverse %}
             {% assign events = events | reverse %}
         {% endif %}
     {% endif %}   

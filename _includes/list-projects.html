@@ -1,7 +1,7 @@
 {% assign cols = include.cols | default: "one-quarter" %}
 {% assign sort = include.sort | default: "title" %}
-{% assign sortNatural = include.sortNatural | default: true %}
-{% assign sortReverse = include.sortReverse | default: false %}
+{% assign sort_natural = include.sort_natural | default: true %}
+{% assign sort_reverse = include.sort_reverse | default: false %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
 
@@ -19,12 +19,12 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% if sortNatural %}
+        {% if sort_natural %}
             {% assign projects = projects | sort_natural: sort %}
         {% else %}
             {% assign projects = projects | sort: sort %}
         {% endif %}
-        {% if sortReverse %}
+        {% if sort_reverse %}
             {% assign projects = projects | reverse %}
         {% endif %}
     {% endif %}

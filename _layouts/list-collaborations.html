@@ -5,8 +5,8 @@ show_sidebar: false
 
 {% assign cols = page.cols | default: "one-quarter" %}
 {% assign sort = page.sort | default: "name" %}
-{% assign sortNatural = page.sortNatural | default: true %}
-{% assign sortReverse = page.sortReverse | default: false %}
+{% assign sort_natural = page.sort_natural | default: true %}
+{% assign sort_reverse = page.sort_reverse | default: false %}
 {% assign style = page.style | default: "card" %}
 
 <div class="columns is-multiline collaborations">
@@ -21,12 +21,12 @@ show_sidebar: false
         
             {% if currentCollaborations.size > 0 %}
                 <h1>Active Collaborations</h1>
-                {% include list-collaborations.html source=currentCollaborations cols=cols style=style sort=sort sortReverse=sortReverse %}
+                {% include list-collaborations.html source=currentCollaborations cols=cols style=style sort=sort sort_reverse=sort_reverse %}
             {% endif %}
 
             {% if formerCollaborations.size > 0 %}
                 <h1>Past Collaborations</h1>
-                {% include list-collaborations.html source=formerCollaborations cols=cols style=style sort=sort sortReverse=sortReverse %}
+                {% include list-collaborations.html source=formerCollaborations cols=cols style=style sort=sort sort_reverse=sort_reverse %}
             {% endif %}
         {% endif %}
     </div>

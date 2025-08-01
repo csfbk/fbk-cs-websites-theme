@@ -1,7 +1,7 @@
 {% assign details = include.details | default: "" %}
 {% assign sort = include.sort | default: "startDate" %}
-{% assign sortNatural = include.sortNatural | default: false %}
-{% assign sortReverse = include.sortReverse | default: true %}
+{% assign sort_natural = include.sort_natural | default: false %}
+{% assign sort_reverse = include.sort_reverse | default: true %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "table" %}
 
@@ -36,12 +36,12 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% if sortNatural %}
+        {% if sort_natural %}
             {% assign disseminations = disseminations | sort_natural: sort %}
         {% else %}
             {% assign disseminations = disseminations | sort: sort %}
         {% endif %}
-        {% if sortReverse %}
+        {% if sort_reverse %}
             {% assign disseminations = disseminations | reverse %}
         {% endif %}
     {% endif %}

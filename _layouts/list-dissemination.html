@@ -4,8 +4,8 @@ show_sidebar: false
 ---
 
 {% assign sort = page.sort | default: "startDate" %}
-{% assign sortNatural = page.sortNatural | default: false %}
-{% assign sortReverse = page.sortReverse | default: true %}
+{% assign sort_natural = page.sort_natural | default: false %}
+{% assign sort_reverse = page.sort_reverse | default: true %}
 {% assign style = page.style | default: "table" %}
 
 <div class="columns is-multiline collaborations">
@@ -22,7 +22,7 @@ show_sidebar: false
                 <h1 id="{{ categoryID }}">{{ category.name }}</h1>
 
                 {% if category.items.size > 0 %}
-                    {% include list-dissemination.html source=category.items sort=sort sortNatural=sortNatural sortReverse=sortReverse style=style %}
+                    {% include list-dissemination.html source=category.items sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 {% endif %}
             {% endfor %}
         {% endif %}
