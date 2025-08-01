@@ -5,8 +5,8 @@ show_sidebar: false
 
 {% assign cols = page.cols | default: "one-quarter" %}
 {% assign sort = page.sort | default: "name" %}
-{% assign sort_natural = page.sort_natural | default: true %}
-{% assign sort_reverse = page.sort_reverse | default: false %}
+{% assign sort_natural = page.sort_natural != "false" %}
+{% assign sort_reverse = page.sort_reverse == "true" %}
 {% assign style = page.style | default: "card" %}
 
 <div class="columns is-multiline collaborations">

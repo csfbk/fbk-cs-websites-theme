@@ -1,6 +1,6 @@
 {% assign sort = include.sort | default: "title" %}
-{% assign sort_natural = include.sort_natural | default: true %}
-{% assign sort_reverse = include.sort_reverse | default: false %}
+{% assign sort_natural = include.sort_natural != "false" %}
+{% assign sort_reverse = include.sort_reverse == "true" %}
 {% assign source = include.source %}
 
 {% if source and source.size > 0 %}

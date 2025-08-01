@@ -1,7 +1,7 @@
 {% assign details = include.details | default: "" %}
 {% assign sort = include.sort | default: "startDate" %}
-{% assign sort_natural = include.sort_natural | default: false %}
-{% assign sort_reverse = include.sort_reverse | default: true %}
+{% assign sort_natural = include.sort_natural == "true" %}
+{% assign sort_reverse = include.sort_reverse != "false" %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "table" %}
 
