@@ -1,4 +1,4 @@
-{% assign sort = include.sort | default: "title" %}
+{% assign sort_by = include.sort_by | default: "title" %}
 {% assign source = include.source %}
 
 {% assign sort_natural = true %}
@@ -26,9 +26,9 @@
 
 {% if sort != "none" %}
     {% if sort_natural %}
-        {% assign topics = topics | sort_natural: sort %}
+        {% assign topics = topics | sort_natural: sort_by %}
     {% else %}
-        {% assign topics = topics | sort: sort %}
+        {% assign topics = topics | sort: sort_by %}
     {% endif %}
     {% if sort_reverse %}
         {% assign topics = topics | reverse %}

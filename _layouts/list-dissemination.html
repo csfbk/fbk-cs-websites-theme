@@ -3,7 +3,7 @@ layout: page
 show_sidebar: false
 ---
 
-{% assign sort = page.sort | default: "startDate" %}
+{% assign sort_by = page.sort_by | default: "startDate" %}
 {% assign style = page.style | default: "table" %}
 
 {% assign sort_natural = false %}
@@ -30,7 +30,7 @@ show_sidebar: false
                 <h1 id="{{ categoryID }}">{{ category.name }}</h1>
 
                 {% if category.items.size > 0 %}
-                    {% include list-dissemination.html source=category.items sort=sort sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                    {% include list-dissemination.html source=category.items sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 {% endif %}
             {% endfor %}
         {% endif %}

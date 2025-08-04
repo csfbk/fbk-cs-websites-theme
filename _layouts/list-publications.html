@@ -3,7 +3,7 @@ layout: page
 show_sidebar: false
 ---
 
-{% assign sort = page.sort | default: "title" %}
+{% assign sort_by = page.sort_by | default: "title" %}
 
 {% assign sort_natural = true %}
 {% if page.sort_natural == false %}
@@ -28,7 +28,7 @@ show_sidebar: false
                 <h1>{{ year.name }} <small>({{ year.items.size }})</small></h1>
 
                 {% if year.items.size > 0 %}
-                    {% include list-publications.html source=year.items sort=sort sort_natural=sort_natural sort_reverse=sort_reverse %}
+                    {% include list-publications.html source=year.items sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
                 {% endif %}
             {% endfor %}
         {% endif %}

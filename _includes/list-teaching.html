@@ -1,5 +1,5 @@
 {% assign details = include.details | default: "" %}
-{% assign sort = include.sort | default: "name" %}
+{% assign sort_by = include.sort_by | default: "name" %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "table" %}
 
@@ -45,9 +45,9 @@
 
     {% if sort != "none" %}
         {% if sort_natural %}
-            {% assign courses = courses | sort_natural: sort %}
+            {% assign courses = courses | sort_natural: sort_by %}
         {% else %}
-            {% assign courses = courses | sort: sort %}
+            {% assign courses = courses | sort: sort_by %}
         {% endif %}
         {% if sort_reverse %}
             {% assign courses = courses | reverse %}

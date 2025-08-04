@@ -1,4 +1,4 @@
-{% assign sort = include.sort | default: "startDate" %}
+{% assign sort_by = include.sort_by | default: "startDate" %}
 {% assign source = include.source %}
 
 {% assign sort_natural = false %}
@@ -26,9 +26,9 @@
 
     {% if sort != "none" %}
         {% if sort_natural %}
-            {% assign events = events | sort_natural: sort %}
+            {% assign events = events | sort_natural: sort_by %}
         {% else %}
-            {% assign events = events | sort: sort %}
+            {% assign events = events | sort: sort_by %}
         {% endif %}
         {% if sort_reverse %}
             {% assign events = events | reverse %}

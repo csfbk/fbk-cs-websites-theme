@@ -3,7 +3,7 @@ layout: page
 show_sidebar: false
 ---
 
-{% assign sort = page.sort | default: "startDate" %}
+{% assign sort_by = page.sort_by | default: "startDate" %}
 
 {% assign sort_natural = false %}
 {% if page.sort_natural == true %}
@@ -29,17 +29,17 @@ show_sidebar: false
             
             {% if currentEvents.size > 0 %}
                 <h1>Ongoing Events</h1>
-                {% include list-events.html source=currentEvents sort=sort sort_natural=sort_natural sort_reverse=sort_reverse %}
+                {% include list-events.html source=currentEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
             {% endif %}        
 
             {% if incomingEvents.size > 0 %}
                 <h1>Incoming Events</h1>
-                {% include list-events.html source=incomingEvents sort=sort sort_natural=sort_natural sort_reverse=sort_reverse %}
+                {% include list-events.html source=incomingEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
             {% endif %}        
 
             {% if pastEvents.size > 0 %}
                 <h1>Past Events</h1>
-                {% include list-events.html source=pastEvents sort=sort sort_natural=sort_natural sort_reverse=sort_reverse %}
+                {% include list-events.html source=pastEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
             {% endif %}
         {% endif %}
     </div>

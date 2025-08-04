@@ -1,5 +1,5 @@
 {% assign cols = include.cols %}
-{% assign sort = include.sort %}
+{% assign sort_by = include.sort_by %}
 {% assign source = include.source %}
 
 {% assign sort_natural = true %}
@@ -28,9 +28,9 @@
 {% if sort %}
     {% if sort != "none" %}
         {% if sort_natural %}
-            {% assign units = units | sort_natural: sort %}
+            {% assign units = units | sort_natural: sort_by %}
         {% else %}
-            {% assign units = units | sort: sort %}
+            {% assign units = units | sort: sort_by %}
         {% endif %}
         {% if sort_reverse %}
             {% assign units = units | reverse %}
