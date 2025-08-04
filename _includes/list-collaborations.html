@@ -1,9 +1,17 @@
 {% assign cols = include.cols | default: "one-quarter" %}
 {% assign sort = include.sort | default: "name" %}
-{% assign sort_natural = include.sort_natural | default: true %}
-{% assign sort_reverse = include.sort_reverse | default: false %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% assign collaborations = "" | split: "" %}

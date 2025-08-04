@@ -1,7 +1,15 @@
 {% assign sort = include.sort | default: "startDate" %}
-{% assign sort_natural = include.sort_natural | default: false %}
-{% assign sort_reverse = include.sort_reverse | default: true %}
 {% assign source = include.source %}
+
+{% assign sort_natural = false %}
+{% if include.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if include.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% assign events = "" | split: "" %}

@@ -4,9 +4,17 @@ show_sidebar: false
 ---
 
 {% assign sort = page.sort | default: "startDate" %}
-{% assign sort_natural = page.sort_natural | default: false %}
-{% assign sort_reverse = page.sort_reverse | default: true %}
 {% assign style = page.style | default: "table" %}
+
+{% assign sort_natural = false %}
+{% if page.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if page.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
 
 <div class="columns is-multiline collaborations">
     <div class="column is-12">
