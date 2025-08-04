@@ -9,6 +9,13 @@ layout: page
     {% assign project = nil %}
 {% endif %}
 
+{% assign partners = "" | split: "" %}
+{% if page.partners %}
+    {% assign partners = page.partners %}
+{% elsif project.partners %}
+    {% assign partners = project.partners %}
+{% endif %}
+
 <span id="set-title">{{ project.title }}</span>
 {% if project.titleAddon %}
     <span id="set-subtitle">{{ project.titleAddon }}</span>
@@ -70,17 +77,27 @@ layout: page
         </div>
     {% endif %}
 
-    {% if page.partners %}
+    {% if partners.size > 0 %}
         <div class="column partners is-12">
             <h1 id="title-partners">Partners</h1>
-            {% if page.partners.first %}
+            {% if partners.first %}
                 <ul>
-                    {% for partner in page.partners %}
-                    <li>{% if partner.link %}<a href="{{ partner.link }}">{{ partner.name }}</a>{% else %}{{ partner.name }}{% endif %}{% if partner.detail %} ({{ partner.detail }}){% endif %}</li>
+                    {% for partner in partners %}
+                        {% if partner.name %}
+                            <li>{% if partner.url %}<a href="{{ partner.url }}">{{ partner.name }}</a>{% else %}{{ partner.name }}{% endif %}{% if partner.description %} ({{ partner.description }}){% endif %}</li>
+                        {% else %}
+                            {% assign partnerFromCollab = site.data.collaborations | where: "id", partner | first %}
+                            {% if partnerFromCollab.internalUrl %}
+                                {% assign url = partnerFromCollab.internalUrl %}
+                            {% else %}
+                                {% assign url = partnerFromCollab.officialUrl %}
+                            {% endif %}
+                            <li><a href="{{ url }}">{{ partnerFromCollab.name }}</a> {% if partnerFromCollab.description %}({{ partnerFromCollab.description }}){% endif %}</li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>{{ page.partners }}</p>
+                <p>{{ partners }}</p>
             {% endif %}
         </div>
     {% endif %}

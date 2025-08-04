@@ -1,5 +1,17 @@
+{% assign cols = include.cols | default: "one-quarter" %}
+{% assign sort_by = include.sort_by | default: "name" %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% assign collaborations = "" | split: "" %}
@@ -14,7 +26,16 @@
         {% endif %}
     {% endfor %}
 
-    {% assign collaborations = collaborations | sort: "name" %}
+    {% if sort != "none" %}
+        {% if sort_natural %}
+            {% assign collaborations = collaborations | sort_natural: sort_by %}
+        {% else %}
+            {% assign collaborations = collaborations | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign collaborations = collaborations | reverse %}
+        {% endif %}
+    {% endif %}
 
     {% if collaborations.size > 0 %}
         {% if style == "card" %}
@@ -25,7 +46,7 @@
 
         {% for collaboration in collaborations %}
             {% if style == "card" %}
-                <div class="column is-4-desktop is-6-tablet collaboration">
+                <div class="column collaboration is-full-mobile is-half-tablet is-{{ cols }}-desktop">
                     <a href="{{ collaboration.internalUrl | prepend: site.baseurl }}">
                         <div class="card enterprise">
                             <div class="card-image">

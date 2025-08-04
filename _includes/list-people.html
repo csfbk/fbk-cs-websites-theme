@@ -1,8 +1,18 @@
-{% assign source = include.source %}
+{% assign cols = include.cols | default: "one-fifth" %}
 {% assign details = include.details | default: "" %}
-{% assign sort = include.sort | default: "name" %}
+{% assign sort_by = include.sort_by | default: "name" %}
+{% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
-{% assign cols = include.cols %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
 <div class="columns is-multiline">
@@ -28,7 +38,14 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign people = people | sort_natural: sort %}
+        {% if sort_natural %}
+            {% assign people = people | sort_natural: sort_by %}
+        {% else %}
+            {% assign people = people | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign people = people | reverse %}
+        {% endif %}
     {% endif %}
 
     {% for person in people %}
@@ -214,7 +231,7 @@
         {% endif %}
 
         {% if style == "card" %}
-            <div class="column is-{% if cols %}{{ cols }}{% else %}one-fifth{% endif %}-desktop is-4-tablet">
+            <div class="column is-full-mobile is-half-tablet is-{{ cols }}-desktop">
                 <div class="card person">
                     {% if details contains "picture" %}
                         {% capture personImage %}

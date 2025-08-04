@@ -1,5 +1,15 @@
+{% assign sort_by = include.sort_by | default: "title" %}
 {% assign source = include.source %}
-{% assign sort = include.sort | default: "order" %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
 {% assign topics = "" | split: "" %}
@@ -15,7 +25,14 @@
 {% endfor %}
 
 {% if sort != "none" %}
-    {% assign topics = topics | sort_natural: sort %}
+    {% if sort_natural %}
+        {% assign topics = topics | sort_natural: sort_by %}
+    {% else %}
+        {% assign topics = topics | sort: sort_by %}
+    {% endif %}
+    {% if sort_reverse %}
+        {% assign topics = topics | reverse %}
+    {% endif %}
 {% endif %}
 
 <div class="columns is-multiline">

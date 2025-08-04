@@ -1,0 +1,38 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign sort_by = page.sort_by | default: "startDate" %}
+{% assign style = page.style | default: "table" %}
+
+{% assign sort_natural = false %}
+{% if page.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if page.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.dissemination %}
+            {% assign disseminationByCategory = site.data.dissemination | group_by: "category" | sort: "name" %}
+
+            {% for category in disseminationByCategory %}
+                {% assign categoryID = category.name | replace: " ", "-" | downcase %}
+                <h1 id="{{ categoryID }}">{{ category.name }}</h1>
+
+                {% if category.items.size > 0 %}
+                    {% include list-dissemination.html source=category.items sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

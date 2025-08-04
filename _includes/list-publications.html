@@ -1,7 +1,17 @@
-{% assign sort = include.sort %}
-{% assign source = include.source %}
 {% assign allowFiltering = include.allowFiltering | default: false %}
 {% assign show_tags = site.show_publication_tags | default: false %}
+{% assign sort_by = include.sort_by | default: "title" %}
+{% assign source = include.source %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
 {% assign publications = "" | split: "" %}
@@ -18,7 +28,14 @@
 
 {% if sort %}
     {% if sort != "none" %}
-        {% assign publications = publications | sort_natural: sort %}
+        {% if sort_natural %}
+            {% assign publications = publications | sort_natural: sort_by %}
+        {% else %}
+            {% assign publications = publications | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign publications = publications | reverse %}
+        {% endif %}
     {% endif %}
 {% else %}
     {% assign publications = publications | sort: "year" | reverse %}

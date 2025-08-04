@@ -1,7 +1,18 @@
+{% assign cols = include.cols | default: "one-quarter" %}
+{% assign details = include.details | default: "" %}
+{% assign sort_by = include.sort_by | default: "name" %}
 {% assign source = include.source %}
 {% assign style = include.style | default: "card" %}
-{% assign sort = include.sort | default: "name" %}
-{% assign details = include.details | default: "" %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% assign tools = "" | split: "" %}
@@ -18,7 +29,14 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign tools = tools | sort_natural: sort %}
+        {% if sort_natural %}
+            {% assign tools = tools | sort_natural: sort_by %}
+        {% else %}
+            {% assign tools = tools | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign tools = tools | reverse %}
+        {% endif %}
     {% endif %}
 
     {% if style == "card" %}
@@ -64,7 +82,7 @@
         {%- endif -%}
 
         {% if style == "card" %}
-            <div class="column is-3-desktop is-4-tablet tool" data-tags="{{ tool.units | join: "|" }}">
+            <div class="column tool is-full-mobile is-half-tablet is-{{ cols }}-desktop" data-tags="{{ tool.units | join: "|" }}">
                 {% if urlDocumentation %}
                 <a href="{{ urlDocumentation }}">
                 {% endif %}

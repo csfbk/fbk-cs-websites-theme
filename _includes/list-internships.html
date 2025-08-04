@@ -1,9 +1,9 @@
 {% assign source = include.source %}
-{% assign sort = include.sort %}
+{% assign sort_by = include.sort_by %}
 
 {% if source and source.size > 0 %}
     {% if sort %}
-        {% assign source = source | sort_natural: sort %}
+        {% assign source = source | sort_natural: sort_by %}
     {% else %}
         {% assign source = source | sort: "applicationEnd" %}
     {% endif %}

@@ -1,8 +1,17 @@
-{% assign source = include.source %}
 {% assign details = include.details | default: "" %}
-{% assign sort = include.sort | default: "startDate" %}
-{% assign sortReverse = include.sortReverse | default: "true" %}
+{% assign sort_by = include.sort_by | default: "startDate" %}
+{% assign source = include.source %}
 {% assign style = include.style | default: "table" %}
+
+{% assign sort_natural = false %}
+{% if include.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if include.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% if style == "table" %}
@@ -35,8 +44,12 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign disseminations = disseminations | sort_natural: sort %}
-        {% if sortReverse %}
+        {% if sort_natural %}
+            {% assign disseminations = disseminations | sort_natural: sort_by %}
+        {% else %}
+            {% assign disseminations = disseminations | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
             {% assign disseminations = disseminations | reverse %}
         {% endif %}
     {% endif %}

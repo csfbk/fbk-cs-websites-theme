@@ -1,4 +1,15 @@
+{% assign sort_by = include.sort_by | default: "startDate" %}
 {% assign source = include.source %}
+
+{% assign sort_natural = false %}
+{% if include.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if include.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% assign events = "" | split: "" %}
@@ -13,7 +24,16 @@
         {% endif %}
     {% endfor %}
 
-    {% assign events = events | sort_natural: "startDate" | reverse %}
+    {% if sort != "none" %}
+        {% if sort_natural %}
+            {% assign events = events | sort_natural: sort_by %}
+        {% else %}
+            {% assign events = events | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign events = events | reverse %}
+        {% endif %}
+    {% endif %}   
 
     <div class="events">
         <ul>

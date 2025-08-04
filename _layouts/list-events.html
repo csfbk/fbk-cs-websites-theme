@@ -1,0 +1,46 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign sort_by = page.sort_by | default: "startDate" %}
+
+{% assign sort_natural = false %}
+{% if page.sort_natural == true %}
+    {% assign sort_natural = true %}
+{% endif %}
+
+{% assign sort_reverse = true %}
+{% if page.sort_reverse == false %}
+    {% assign sort_reverse = false %}
+{% endif %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.events %}
+            {% assign todayDate = 'now' | date: '%Y-%m-%d' %}
+            {% assign currentEvents = site.data.events | where_exp: "event", "event.startDate <= todayDate" | where_exp: "event", "event.endDate >= todayDate" %}
+            {% assign incomingEvents = site.data.events | where_exp: "event", "event.startDate > todayDate" %}
+            {% assign pastEvents = site.data.events | where_exp: "event", "event.endDate < todayDate" %}
+            
+            {% if currentEvents.size > 0 %}
+                <h1>Ongoing Events</h1>
+                {% include list-events.html source=currentEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
+            {% endif %}        
+
+            {% if incomingEvents.size > 0 %}
+                <h1>Incoming Events</h1>
+                {% include list-events.html source=incomingEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
+            {% endif %}        
+
+            {% if pastEvents.size > 0 %}
+                <h1>Past Events</h1>
+                {% include list-events.html source=pastEvents sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

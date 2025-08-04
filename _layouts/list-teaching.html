@@ -1,0 +1,82 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign sort_by = page.sort_by | default: "name" %}
+{% assign style = page.style | default: "table" %}
+
+{% assign sort_natural = true %}
+{% if page.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if page.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.teaching %}
+            <h1>Courses</h1>
+            {% assign courses_BSc = site.data.teaching | where_exp: "course", "course.level contains 'BSc'" %}
+            {% assign courses_MSc = site.data.teaching | where_exp: "course", "course.level contains 'MSc'" %}
+            {% assign courses_BSc_MSc = "" | split: "" %}
+
+            {% for course in courses_BSc %}
+                {% unless courses_BSc_MSc contains course %}
+                    {% assign courses_BSc_MSc = courses_BSc_MSc | push: course %}
+                {% endunless %}
+            {% endfor %}
+
+            {% for course in courses_MSc %}
+                {% unless courses_BSc_MSc contains course %}
+                    {% assign courses_BSc_MSc = courses_BSc_MSc | push: course %}
+                {% endunless %}
+            {% endfor %}
+
+            {% if courses_BSc_MSc.size > 0 %}
+                <section class="teaching-section bsc-msc-courses">
+                    <h2>Bachelor's and Master's Courses</h2>
+                    {% include list-teaching.html source=courses_BSc_MSc sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                </section>
+            {% endif %}
+
+            {% assign courses_PhD = site.data.teaching | where_exp: "course", "course.level contains 'PhD'" %}
+            {% if courses_PhD.size > 0 %}
+                <section class="teaching-section phd-courses">
+                    <h2>PhD Courses</h2>
+                    {% include list-teaching.html source=courses_PhD sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                </section>
+            {% endif %}
+
+            {% assign courses_highSchools = site.data.teaching | where_exp: "course", "course.level contains 'High School'" %}
+            {% if courses_highSchools.size > 0 %}
+                <section class="teaching-section high-school-courses">
+                    <h2>High School Courses</h2>
+                    {% include list-teaching.html source=courses_highSchools sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                </section>
+            {% endif %}
+
+            {% assign courses_other = site.data.teaching | where_exp: "course", "course.level == nil" %}
+            {% if courses_other.size > 0 %}
+                <section class="teaching-section other-courses">
+                    <h2>Other Courses</h2>
+                    {% include list-teaching.html source=courses_other sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
+                </section>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="column is-12">
+        {% if page.internships %}
+            <h1>Internship Projects</h1>
+            {{ page.internships }}
+        {% endif %}
+    </div>
+</div>

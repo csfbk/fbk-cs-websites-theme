@@ -1,7 +1,17 @@
-{% assign source = include.source %}
 {% assign details = include.details | default: "" %}
-{% assign sort = include.sort | default: "name" %}
+{% assign sort_by = include.sort_by | default: "name" %}
+{% assign source = include.source %}
 {% assign style = include.style | default: "table" %}
+
+{% assign sort_natural = true %}
+{% if include.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if include.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
 
 {% if source and source.size > 0 %}
     {% if style == "table" %}
@@ -34,7 +44,14 @@
     {% endfor %}
 
     {% if sort != "none" %}
-        {% assign courses = courses | sort_natural: sort %}
+        {% if sort_natural %}
+            {% assign courses = courses | sort_natural: sort_by %}
+        {% else %}
+            {% assign courses = courses | sort: sort_by %}
+        {% endif %}
+        {% if sort_reverse %}
+            {% assign courses = courses | reverse %}
+        {% endif %}
     {% endif %}
 
     {%- for course in courses -%}

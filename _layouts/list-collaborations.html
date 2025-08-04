@@ -1,0 +1,41 @@
+---
+layout: page
+show_sidebar: false
+---
+
+{% assign cols = page.cols | default: "one-quarter" %}
+{% assign sort_by = page.sort_by | default: "name" %}
+{% assign style = page.style | default: "card" %}
+
+{% assign sort_natural = true %}
+{% if page.sort_natural == false %}
+    {% assign sort_natural = false %}
+{% endif %}
+
+{% assign sort_reverse = false %}
+{% if page.sort_reverse == true %}
+    {% assign sort_reverse = true %}
+{% endif %}
+
+<div class="columns is-multiline collaborations">
+    <div class="column is-12">
+        {{ content }}
+    </div>
+
+    <div class="column is-12">
+        {% if site.data.collaborations %}
+            {% assign currentCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear == nil" %}
+            {% assign formerCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear != nil" %}
+        
+            {% if currentCollaborations.size > 0 %}
+                <h1>Active Collaborations</h1>
+                {% include list-collaborations.html source=currentCollaborations cols=cols style=style sort_by=sort_by sort_reverse=sort_reverse %}
+            {% endif %}
+
+            {% if formerCollaborations.size > 0 %}
+                <h1>Past Collaborations</h1>
+                {% include list-collaborations.html source=formerCollaborations cols=cols style=style sort_by=sort_by sort_reverse=sort_reverse %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
