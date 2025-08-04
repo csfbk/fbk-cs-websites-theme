@@ -1,3 +1,17 @@
+# 0.3.0
+* Hide bio background from personal pages when empty
+* Implement common parameters in list-* includes (cols, sort, sortReverse, style)
+* Add layouts for lists of collaborations, dissemination, events, projects, publications, teaching, tools (with custom parameters for related includes)
+* Add possibility to include custom CSS and JS scripts without affecting those required by the theme (via head-scripts-custom.html and footer-scripts-custom.html)
+* Consider project's partners from both projects' YAML and project's page
+* Change logic to determine member's FBK role in personal page
+* Implement sortNatural parameter in list includes and layouts to allow for selection of sorting operation
+* Implement full sorting parameters in list-events include and layout
+* Update sortNatural and sortReverse parameters using snake case (sort_natural and sort_reverse)
+* Update sort_natural and sort_reverse logic to handle boolean default values through logical instructions instead of the default command
+* Change sort parameter in sort_by to avoid conflicts with Liquid method
+* Minor fixes
+
 # 0.2.0
 * Display social links in header
 * Add cols parameter in list-people include
