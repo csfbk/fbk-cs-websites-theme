@@ -45,9 +45,28 @@
         {% endif %}
 
         {% for collaboration in collaborations %}
+            {% assign url = nil %}
+            {% if collaboration.url %}
+                {% if site.entity_type == "unit" %}
+                    {% if collaboration.url.unit %}
+                        {% assign url = collaboration.url.unit %}
+                    {% elsif collaboration.url.center %}
+                        {% assign url = collaboration.url.center | prepend: site.organization.center.website %}
+                    {% elsif collaboration.url.external %}
+                        {% assign url = collaboration.url.external %}
+                    {% endif %}
+                {% elsif site.entity_type == "center" %}
+                    {% if collaboration.url.center %}
+                        {% assign url = collaboration.url.center %}
+                    {% elsif collaboration.url.external %}
+                        {% assign url = collaboration.url.external %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
             {% if style == "card" %}
                 <div class="column collaboration is-full-mobile is-half-tablet is-{{ cols }}-desktop">
-                    <a href="{{ collaboration.internalUrl | prepend: site.baseurl }}">
+                    <a href="{{ url }}">
                         <div class="card enterprise">
                             <div class="card-image">
                                 <figure class="image">
@@ -72,7 +91,7 @@
                 </div>
             {% elsif style == "list" %}
                 <li class="item collaboration">
-                    <a href="{{ collaboration.internalUrl | prepend: site.baseurl }}">
+                    <a href="{{ url }}">
                         <b>{{ collaboration.name }}</b>
                     </a>
                 </li>

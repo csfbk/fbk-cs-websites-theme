@@ -14,6 +14,11 @@ layout: page
 
 <div class="columns collaboration is-multiline">
     <div class="column overview is-12">
+        {% if site.entity_type == "unit" and collaboration.url.center %}
+            <div class="notification is-warning">
+                <p>A general description is available on the <a href="{{ collaboration.url.center | prepend: site.organization.center.website }}">website of the Center</a>.</p>
+            </div>
+        {% endif %}
         {% if collaboration.logo %}
             <img class="logo pull-right" src="/assets/areas/collaborations/{{ collaboration.logo }}" />
         {% endif %}
@@ -28,8 +33,15 @@ layout: page
             <h1 id="title-details">Details</h1>
             <ul class="no-bullet">
                 {% if collaboration.startYear or collaboration.endYear %}<li><b>Period</b>:{% if collaboration.startYear %} from {{ collaboration.startYear }}{% endif %}{% if collaboration.endYear %} until {{ collaboration.endYear }}{% endif %}.</li>{% endif %}
-                {% if collaboration.officialUrl %}<li><b>Website</b>: <a href="{{ collaborationFromId.officialUrl }}">{{ collaboration.officialUrl }}</a></li>{% endif %}
+                {% if collaboration.url.external %}<li><b>Website</b>: <a href="{{ collaboration.url.external }}">{{ collaboration.url.external }}</a></li>{% endif %}
             </ul>
+        </div>
+    {% endif %}
+
+    {% if site.entity_type == "center" and collaboration.url.units %}
+        <div class="column units-details is-12">
+            <h1 id="title-units-details">Further Details on the Units' Websites</h1>
+            {% include list-unit-links.html source=collaboration.url.units %}
         </div>
     {% endif %}
 </div>
