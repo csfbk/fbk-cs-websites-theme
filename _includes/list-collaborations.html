@@ -78,12 +78,13 @@
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4">
-                                    {{ collaboration.name }}
-                                    {% if collaboration.acronym %} ({{ collaboration.acronym }}){% endif %}
-                                </p>
+                                <p class="title is-4">{{ collaboration.name }}</p>
+                                {% if collaboration.nameAddon %}
+                                    <p class="subtitle is-4 addon"><small>{{ collaboration.nameAddon }}</small></p>
+                                {% endif %}
                                 {% if collaboration.description %}
-                                    <p class="subtitle is-4">{{ collaboration.description }}</p>
+                                    <hr />
+                                    <p class="subtitle is-4 addon"><small>{{ collaboration.description }}</small></p>
                                 {% endif %}
                             </div>
                         </div>
