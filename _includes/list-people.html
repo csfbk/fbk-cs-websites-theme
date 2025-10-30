@@ -14,6 +14,8 @@
     {% assign sort_reverse = true %}
 {% endif %}
 
+{% assign affiliationsCS = "Center for Cybersecurity,AppLiEd cryptograPHy,Distributed AI for dependable cyberSecuritY,Secure code liFEcycle for applications and netWoRking,Security & Trust" | split: "," %}
+
 {% if source and source.size > 0 %}
 <div class="columns is-multiline">
     {% if style == "list" %}    
@@ -253,9 +255,11 @@
                             {% for affiliation in person.affiliations %}
                                 <div class="affiliation{% if person.affiliations.size > 1 %} more{% endif %}">
                                     {% if affiliation.role and details contains "role" %}<p class="subtitle affiliation role is-4">{{ affiliation.role }}</p>{% endif %}
-                                    {% if affiliation.unit and details contains "unit" %}<p class="subtitle affiliation unit is-4">{{ affiliation.unit }}</p>{% endif %}
-                                    {% if affiliation.institution and details contains "institution" %}<p class="subtitle affiliation institution is-4">{{ affiliation.institution }}</p>{% endif %}
-                                    {% if affiliation.place and details contains "place" %}<p class="subtitle affiliation place is-4">{{ affiliation.place }}</p>{% endif %}
+                                    {% unless affiliationsCS contains affiliation.unit %}
+                                        {% if affiliation.unit and details contains "unit" %}<p class="subtitle affiliation unit is-4">{{ affiliation.unit }}</p>{% endif %}
+                                        {% if affiliation.institution and details contains "institution" %}<p class="subtitle affiliation institution is-4">{{ affiliation.institution }}</p>{% endif %}
+                                        {% if affiliation.place and details contains "place" %}<p class="subtitle affiliation place is-4">{{ affiliation.place }}</p>{% endif %}
+                                    {% endunless %}
                                 </div>
                             {% endfor %}
                         {% elsif details contains "internalRole" or details contains "internalUnit" %}
