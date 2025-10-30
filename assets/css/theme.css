@@ -1013,6 +1013,7 @@ table.program td p.location::before {
 /* DARK THEME */
 @media (prefers-color-scheme: dark) {
   body,
+  strong,
   .menu a {
     color: var(--text-color) !important;
   }
