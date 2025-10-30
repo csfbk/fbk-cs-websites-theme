@@ -10,6 +10,9 @@ layout: page
 {% endif %}
 
 <span id="set-title">{{ tool.name }}</span>
+{% if tool.nameAddon %}
+    <span id="set-subtitle">{{ tool.nameAddon }}</span>
+{% endif %}
 
 <div class="columns is-multiline">
 
