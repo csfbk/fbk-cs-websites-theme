@@ -16,6 +16,8 @@
     {% else %}
         {% assign personImage = "https://my.fbk.eu/fbk-api/v2/picture/no-user?w=300" %}
     {% endif %}
+{% else %}
+    {% assign personImage = nil %}
 {% endif %}
 
 {{ personImage }}
