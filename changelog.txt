@@ -1,3 +1,12 @@
+# 0.4.0
+* Update collaboration layout (and related list) to reflect new URLs structure
+* Update list-collaborations include to support the nameAddon field
+* Fix ordered list in internship projects
+* Display people's unit and institution only if external
+* Show tool's nameAddon as page subtitle
+* Enhance visibility for strong elements in dark mode
+* Fix issue related to unspecified members' pictures
+
 # 0.3.0
 * Hide bio background from personal pages when empty
 * Implement common parameters in list-* includes (cols, sort, sortReverse, style)
