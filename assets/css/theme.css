@@ -382,17 +382,17 @@ div.filters {
   padding: 0.5em 0.75em;
 }
 
-#markdown-toc a:hover {
+.menu a:hover {
   background-color: var(--toc-color-hover);
   color: #363636;
 }
 
-#markdown-toc a.is-active {
+.menu a.is-active {
   background-color: #3273dc;
   color: #fff;
 }
 
-#markdown-toc li ul {
+.menu li ul {
   border-left: 1px solid #dbdbdb;
   margin: 0.75em;
   padding-left: 0.75em;
@@ -1160,7 +1160,7 @@ a .fa-stack,
 .collaboration a,
 .project a,
 .tool a,
-#markdown-toc a {
+.menu a {
   text-decoration: none;
 }
 /* END LINKS */
