@@ -4,6 +4,7 @@ show_sidebar: false
 ---
 
 {% assign cols = page.cols | default: "one-quarter" %}
+{% assign currentParameter = page.currentParameter | default: "date" %}
 {% assign sort_by = page.sort_by | default: "name" %}
 {% assign style = page.style | default: "card" %}
 
@@ -24,8 +25,16 @@ show_sidebar: false
 
     <div class="column is-12">
         {% if site.data.collaborations %}
-            {% assign currentCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear == nil" %}
-            {% assign formerCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear != nil" %}
+            {% if currentParameter == "date" %}
+                {% assign currentCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear == nil" %}
+                {% assign formerCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.endYear != nil" %}
+            {% elsif currentParameter == "isCurrent" %}
+                {% assign currentCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.isCurrent == true" %}
+                {% assign formerCollaborations = site.data.collaborations | where_exp: "collaboration", "collaboration.isCurrent != true" %}
+            {% else %}
+                {% assign currentCollaborations = "" | split: "" %}
+                {% assign formerCollaborations = "" | split: "" %}
+            {% endif %}
         
             {% if currentCollaborations.size > 0 %}
                 <h1>Active Collaborations</h1>

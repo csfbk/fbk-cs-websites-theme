@@ -4,6 +4,7 @@ show_sidebar: false
 ---
 
 {% assign cols = page.cols | default: "one-quarter" %}
+{% assign currentParameter = page.currentParameter | default: "date" %}
 {% assign sort_by = page.sort_by | default: "title" %}
 {% assign style = page.style | default: "card" %}
 
@@ -24,11 +25,19 @@ show_sidebar: false
 
     <div class="column is-12">
         {% if site.data.projects %}
-            {% assign todayDate = 'now' | date: '%Y-%m-%d' %}
-            {% assign currentProjectsWithoutEnd = site.data.projects | where_exp: "project", "project.endDate == nil" %}
-            {% assign currentProjectsWithEnd = site.data.projects | where_exp: "project", "project.endDate >= todayDate" %}
-            {% assign currentProjects = currentProjectsWithoutEnd | concat: currentProjectsWithEnd %}
-            {% assign formerProjects = site.data.projects | where_exp: "project", "project.endDate < todayDate" %}
+            {% if currentParameter == "date" %}
+                {% assign todayDate = 'now' | date: '%Y-%m-%d' %}
+                {% assign currentProjectsWithoutEnd = site.data.projects | where_exp: "project", "project.endDate == nil" %}
+                {% assign currentProjectsWithEnd = site.data.projects | where_exp: "project", "project.endDate >= todayDate" %}
+                {% assign currentProjects = currentProjectsWithoutEnd | concat: currentProjectsWithEnd %}
+                {% assign formerProjects = site.data.projects | where_exp: "project", "project.endDate < todayDate" %}
+            {% elsif currentParameter == "isCurrent" %}
+                {% assign currentProjects = site.data.projects | where_exp: "project", "project.isCurrent == true" %}
+                {% assign formerProjects = site.data.projects | where_exp: "project", "project.isCurrent != true" %}
+            {% else %}
+                {% assign currentProjects = "" | split: "" %}
+                {% assign formerProjects = "" | split: "" %}
+            {% endif %}
 
             {% if currentProjects.size > 0 %}
                 <h1>Current Projects</h1>
