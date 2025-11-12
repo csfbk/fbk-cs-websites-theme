@@ -59,9 +59,25 @@
         {%- if course.lecturer -%}
             {%- if course.lecturer | first -%}
                 {% for lecturer in course.lecturer %}
-                    {% assign lecturerFromId = site.data.people | where: "id", lecturer %}
-                    {% assign lecturerName = lecturerFromId[0]["name"] | append: " " | append: lecturerFromId[0]["surname"] %}
-                    {%- assign lecturers = lecturers | push: lecturerName -%}
+                    {% if lecturer.id %}
+                        {% assign lecturerFromId = site.data.people | where: "id", lecturer.id %}
+                        {% assign lecturerName = lecturerFromId[0]["name"] | append: " " | append: lecturerFromId[0]["surname"] %}
+                        {%- if lecturer.startYear -%}
+                            {% assign lecturerName = lecturerName | append: " (from " | append: lecturer.startYear %}
+                            {%- if lecturer.endYear -%}
+                                {% assign lecturerName = lecturerName | append: " to " | append: lecturer.endYear | append: ")" %}
+                            {% else %}
+                                {% assign lecturerName = lecturerName | append: ")" %}
+                            {% endif %}
+                        {% elsif lecturer.endYear -%}
+                            {% assign lecturerName = lecturerName | append: " (until " | append: lecturer.endYear | append: ")"  %}
+                        {% endif %}
+                        {%- assign lecturers = lecturers | push: lecturerName -%}
+                    {% else %}
+                        {% assign lecturerFromId = site.data.people | where: "id", lecturer %}
+                        {% assign lecturerName = lecturerFromId[0]["name"] | append: " " | append: lecturerFromId[0]["surname"] %}
+                        {%- assign lecturers = lecturers | push: lecturerName -%}
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 {% assign lecturerFromId = site.data.people | where: "id", course.lecturer %}
