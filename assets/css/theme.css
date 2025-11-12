@@ -66,10 +66,6 @@ html {
   scroll-behavior: smooth;
 }
 
-p a {
-  text-decoration: underline;
-}
-
 @media (max-width: 768px) {
   .reverse-columns {
     flex-direction: column-reverse;
@@ -160,10 +156,6 @@ li.bio {
 
 .project img.logo {
   margin-top: 1em;
-}
-
-.fa-stack .fa-circle {
-  color: var(--primary);
 }
 
 div.filters {
@@ -382,7 +374,7 @@ div.filters {
 }
 
 #markdown-toc a:hover {
-  background-color: whitesmoke;
+  background-color: var(--toc-color-hover);
   color: #363636;
 }
 
@@ -1019,7 +1011,7 @@ table.program td p.location::before {
   }
 
   section {
-    background-color: hsl(221, 14%, 11%) !important;
+    background-color: var(--background-color) !important;
   }
 
   .button {
@@ -1137,3 +1129,50 @@ table.program td p.location::before {
   }
 }
 /* END NAVBAR HEADER */
+
+/* LINKS */
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+a.navbar-item,
+a.navbar-link {
+  text-decoration: none;
+}
+
+a.button,
+a .fa-stack,
+.card .links a,
+.collaboration a,
+.project a,
+.tool a,
+#markdown-toc a {
+  text-decoration: none;
+}
+/* END LINKS */
+
+/* D3GRAPH */
+.d3graph-node-circle {
+  fill: var(--background-color);
+}
+
+.d3graph-node-label {
+  fill: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25em;
+}
+
+.d3graph-node-icon {
+  fill: var(--text-color);
+}
+
+.d3graph-connection-line {
+  stroke: #999;
+  stroke-opacity: 0.5;
+}
+/* END D3GRAPH */

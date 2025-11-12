@@ -36,24 +36,38 @@ $primary-dark: hsl($primary-dark-h, $primary-dark-s, $primary-dark-l);
 $navbar-separator: darken($primary, 5%);
 $navbar-separator-dark: darken($primary-dark, 5%);
 
+$link-color-light: $primary;
+$link-color-light-hover: darken($link-color-light, 20%);
+$link-color-dark: #2f7fba;
+$link-color-dark-hover: lighten($link-color-dark, 20%);
+
+$toc-color-hover-light: lighten($primary, 50%);
+$toc-color-hover-dark: darken($primary, 20%);
+
 :root {
   --primary: #{$primary};
+  --background-color: #ffffff;
   --bulma-hero-h: #{$primary-h};
   --bulma-hero-s: #{$primary-s};
   --bulma-hero-background-l: #{$primary-l};
-  --link-color: #{$primary};
+  --link-color: #{$link-color-light};
+  --link-color-hover: #{$link-color-light-hover};
   --navbar-separator: #{$navbar-separator};
   --text-color: #4a4a4a;
+  --toc-color-hover: #{$toc-color-hover-light};
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #{$primary-dark};
+    --background-color: hsl(221, 14%, 11%);
     --bulma-hero-h: #{$primary-h};
     --bulma-hero-s: #{$primary-dark-s};
     --bulma-hero-background-l: #{$primary-dark-l};
-    --link-color: var(--text-color);
+    --link-color: #{$link-color-dark};
+    --link-color-hover: #{$link-color-dark-hover};
     --navbar-separator: #{$navbar-separator-dark};
-    --text-color: hsl(221deg, 14%, 71%);
+    --text-color: hsl(220, 16%, 89%);
+    --toc-color-hover: #{$toc-color-hover-dark};
   }
 }
