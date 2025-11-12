@@ -23,11 +23,15 @@ layout: page
             </div>
         {% endif %}
         {% if tool.logo %}
-            {% assign checkURL = tool.logo | split: "http" %}
-            {% if checkURL.size > 0 and checkURL[0] == "" %}
-                <img class="logo pull-right" src="{{ tool.logo }}" />
+            {% capture toolLogo %}
+                {% include collection-logo.html element=tool collection="tool" %}
+            {% endcapture %}
+            {% if toolLogo contains ".svg" %}
+                <svg class="logo pull-right">
+                    <use href="{{ toolLogo }}"/>
+                </svg>
             {% else %}
-                <img class="logo pull-right" src="/assets/areas/tools/{{ tool.logo }}" />
+                <img class="logo pull-right" src="{{ toolLogo }}" />
             {% endif %}
         {% endif %}
         {{ content }}

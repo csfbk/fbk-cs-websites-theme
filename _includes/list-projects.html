@@ -72,11 +72,15 @@
                             <div class="card-image">
                                 <figure class="image">
                                     {% if project.logo %}
-                                        {% assign checkURL = project.logo | split: "http" %}
-                                        {% if checkURL.size > 0 and checkURL[0] == "" %}
-                                            <img src="{{ project.logo }}" alt="{{ project.title }}">
+                                        {% capture projectLogo %}
+                                            {% include collection-logo.html element=project collection="project" %}
+                                        {% endcapture %}
+                                        {% if projectLogo contains ".svg" %}
+                                            <svg>
+                                                <use href="{{ projectLogo }}"/>
+                                            </svg>
                                         {% else %}
-                                            <img src="/assets/areas/projects/{{ project.logo }}" alt="{{ project.title }}">
+                                            <img src="{{ projectLogo }}" alt="{{ project.title }}">
                                         {% endif %}
                                     {% else %}
                                         <img class="default" alt="{{ project.title }}">

@@ -71,7 +71,16 @@
                             <div class="card-image">
                                 <figure class="image">
                                     {% if collaboration.logo %}
-                                        <img src="{{ site.baseurl }}/assets/areas/collaborations/{{ collaboration.logo }}" alt="{{ collaboration.name }}">
+                                        {% capture collaborationLogo %}
+                                            {% include collection-logo.html element=collaboration collection="collaboration" %}
+                                        {% endcapture %}
+                                        {% if collaborationLogo contains ".svg" %}
+                                            <svg>
+                                                <use href="{{ collaborationLogo }}"/>
+                                            </svg>
+                                        {% else %}
+                                            <img src="{{ collaborationLogo }}" alt="{{ collaboration.name }}">
+                                        {% endif %}
                                     {% else %}
                                         <img class="default" alt="{{ collaboration.name }}">
                                     {% endif %}

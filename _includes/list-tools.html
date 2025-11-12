@@ -90,11 +90,15 @@
                         <div class="card-image">
                             <figure class="image">
                                 {% if tool.logo %}
-                                    {% assign checkURL = tool.logo | split: "http" %}
-                                    {% if checkURL.size > 0 and checkURL[0] == "" %}
-                                        <img src="{{ tool.logo }}" alt="{{ tool.name }}">
+                                    {% capture toolLogo %}
+                                        {% include collection-logo.html element=tool collection="tool" %}
+                                    {% endcapture %}
+                                    {% if toolLogo contains ".svg" %}
+                                        <svg>
+                                            <use href="{{ toolLogo }}"/>
+                                        </svg>
                                     {% else %}
-                                        <img src="/assets/areas/tools/{{ tool.logo }}" alt="{{ tool.name }}">
+                                        <img src="{{ toolLogo }}" alt="{{ tool.name }}">
                                     {% endif %}
                                 {% else %}
                                     <img class="default" alt="{{ tool.name }}">

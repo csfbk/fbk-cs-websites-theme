@@ -20,7 +20,16 @@ layout: page
             </div>
         {% endif %}
         {% if collaboration.logo %}
-            <img class="logo pull-right" src="/assets/areas/collaborations/{{ collaboration.logo }}" />
+            {% capture collaborationLogo %}
+                {% include collection-logo.html element=collaboration collection="collaboration" %}
+            {% endcapture %}
+            {% if collaborationLogo contains ".svg" %}
+                <svg class="logo pull-right">
+                    <use href="{{ collaborationLogo }}"/>
+                </svg>
+            {% else %}
+                <img class="logo pull-right" src="{{ collaborationLogo }}" />
+            {% endif %}
         {% endif %}
         {% if content.size > 1 %}
             <h1 id="title-overview">Overview</h1>

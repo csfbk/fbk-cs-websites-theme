@@ -1,0 +1,29 @@
+{% assign element = include.element %}
+{% assign collection = include.collection | default: "" %}
+
+{% case collection %}
+    {% when "collaboration" %}
+        {% assign path = "/assets/areas/collaborations/" %}
+    {% when "project" %}
+        {% assign path = "/assets/areas/projects/" %}
+    {% when "tool" %}
+        {% assign path = "/assets/areas/tools/" %}
+    {% else %}
+        {% assign path = nil %}
+{% endcase %}
+
+{% assign logo = nil %}
+{% if element.logo %}
+    {% assign checkURL = element.logo | split: "http" %}
+    {% assign logoFirstCharacter = element.logo | slice: 0, 1 %}
+
+    {% if checkURL.size > 0 and checkURL[0] == "" %}
+        {% assign logo = element.logo %}
+    {% elsif logoFirstCharacter == "/" %}
+        {% assign logo = element.logo %}
+    {% elsif path %}
+        {% assign logo = path | append: element.logo %}
+    {% endif %}
+{% endif %}
+
+{{ logo }}

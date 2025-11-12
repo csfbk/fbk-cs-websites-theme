@@ -288,6 +288,15 @@ div.filters {
   width: auto;
 }
 
+.card.enterprise .card-image svg,
+.card.project .card-image svg,
+.card.sponsor .card-image svg,
+.card.tool .card-image svg,
+.card.unit .card-image svg {
+  width: 100%;
+  fill: var(--text-color);
+}
+
 .card .card-image img.default {
   content: var(--logo-default);
 }
