@@ -21,7 +21,7 @@ layout: default
     {% endif %}
 
     {% assign roleFBK = "Collaborator" %}
-    {% assign affiliationsCS = "Center for Cybersecurity,AppLiEd cryptograPHy,Distributed AI for dependable cyberSecuritY,Secure code liFEcycle for applications and netWoRking,Security & Trust" | split: "," %}
+    {% assign affiliationsCS = "Center for Cybersecurity,AppLiEd cryptograPHy,Applied Cryptography,Distributed AI for dependable cyberSecuritY,Secure code liFEcycle for applications and netWoRking,Security & Trust" | split: "," %}
     {% if person.affiliations %}
         {% for affiliation in person.affiliations %}
             {% if affiliation.institution == "Fondazione Bruno Kessler" %}
