@@ -29,8 +29,12 @@
                 <div class="content is-small has-text-centered content-manager">
                     <p class=""><b>Content Manager:</b></p>
                     <p class="">{{ site.content-manager.name | default: "Content Manager Name" }}</p>
-                    <p class="">{{ site.content-manager.affiliation | default: "Research Unit" }}</p>
-                    <p class="">Phone: {{ site.content-manager.phone | default: "Content Manager Phone" }}</p>
+                    {% if site.content-manager.affiliation %}
+                        <p class="">{{ site.content-manager.affiliation | default: "Research Unit" }}</p>
+                    {% endif %}
+                    {% if site.content-manager.phone %}
+                        <p class="">Phone: {{ site.content-manager.phone }}</p>
+                    {% endif %}
                     <p class="">Email: {{ site.content-manager.email | default: "Content Manager Email" }}</p>
                 </div>
 
