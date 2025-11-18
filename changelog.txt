@@ -1,3 +1,15 @@
+# 1.0.0
+* Update logo of the Center
+* Add optional startYear and endYear parameters for lecturers in teaching activities
+* Add global parameter site.hide_hero, which can be overrided by the local parameter page.hide_hero
+* Add possibility to locally specify how to distinguish between current and former collaborations/projects (date comparison or isCurrent explicit parameter)
+* Turn content manager's affiliation and phone into optional parameters
+* Style improvement for links and dark mode
+* Implement collection-logo include to properly handle collection logos, handle different cases (including SVG)
+* Update banner for archived person pages to dynamically refer to the specific unit/center.
+* Style improvement for tables in dark mode
+* Minor fixes
+
 # 0.4.0
 * Update collaboration layout (and related list) to reflect new URLs structure
 * Update list-collaborations include to support the nameAddon field
