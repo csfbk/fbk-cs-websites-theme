@@ -977,6 +977,7 @@ table.program td.award p.name {
 }
 
 table.program td p.title {
+  color: var(--text-color);
   font-size: medium;
   font-weight: normal;
 }
@@ -1052,6 +1053,10 @@ table.program td p.location::before {
     border-width: 0 0 1px !important;
   }
 
+  .bordered, table.bordered tr td {
+    border: 1px solid hsl(221, 14%, 24%) !important;
+  }
+
   .content table thead td, .content table thead th {
     color: hsl(221deg, 14%, 93%) !important;
   }
@@ -1072,6 +1077,18 @@ table.program td p.location::before {
 
   hr {
     background-color: hsl(221, 14%, 14%) !important;
+  }
+
+  .content blockquote {
+    background-color: hsl(221, 14%, 14%) !important;
+  }
+
+  table.program tr.day td,
+  table.program tr.session td,
+  table.program tr.institutional td,
+  table.program tr.recreational td,
+  table.program tr.logistical td {
+    background-color: transparent;
   }
 }
 /* END DARK THEME */
