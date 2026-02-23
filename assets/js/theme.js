@@ -89,8 +89,8 @@ function toggleTheme() {
   const currentTheme = $(htmlEl).attr("data-theme");
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-  if (newTheme === "dark") $(".theme-toggle .theme-icon").removeClass("fa-sun").addClass("fa-moon");
-  else $(".theme-toggle .theme-icon").removeClass("fa-moon").addClass("fa-sun");
+  if (newTheme === "dark") $(".theme-toggle .theme-toggle-icon").removeClass("fa-sun").addClass("fa-moon");
+  else $(".theme-toggle .theme-toggle-icon").removeClass("fa-moon").addClass("fa-sun");
   
   $(htmlEl).attr("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
@@ -99,12 +99,12 @@ function toggleTheme() {
 function handleToggleTheme() {
   const currentTheme = $("html").attr("data-theme");
 
-  if (currentTheme === "dark") $(".theme-toggle .theme-icon").removeClass("fa-sun").addClass("fa-moon");
-  else $(".theme-toggle .theme-icon").removeClass("fa-moon").addClass("fa-sun");
+  if (currentTheme === "dark") $(".theme-toggle .theme-toggle-icon").removeClass("fa-sun").addClass("fa-moon");
+  else $(".theme-toggle .theme-toggle-icon").removeClass("fa-moon").addClass("fa-sun");
 
   $(".theme-toggle").on("click", function() {
     toggleTheme();
-});
+  });
 }
 
 // CODE
