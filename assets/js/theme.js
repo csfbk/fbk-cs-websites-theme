@@ -119,7 +119,7 @@ function initTheme() {
   const saved = localStorage.getItem("theme");
 
   if (saved) {
-    $("html").setAttribute("data-theme", saved);
+    $("html").attr("data-theme", saved);
   }
 
   updateIcon(getEffectiveTheme());
