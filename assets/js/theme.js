@@ -84,6 +84,29 @@ function appendReferrerURI(link) {
   return link;
 }
 
+function toggleTheme() {
+  const htmlEl = $("html");
+  const currentTheme = $(htmlEl).attr("data-theme");
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  if (newTheme === "dark") $(".theme-toggle .theme-icon").removeClass("fa-sun").addClass("fa-moon");
+  else $(".theme-toggle .theme-icon").removeClass("fa-moon").addClass("fa-sun");
+  
+  $(htmlEl).attr("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
+}
+
+function handleToggleTheme() {
+  const currentTheme = $("html").attr("data-theme");
+
+  if (currentTheme === "dark") $(".theme-toggle .theme-icon").removeClass("fa-sun").addClass("fa-moon");
+  else $(".theme-toggle .theme-icon").removeClass("fa-moon").addClass("fa-sun");
+
+  $(".theme-toggle").on("click", function() {
+    toggleTheme();
+});
+}
+
 // CODE
 // Open external links in a new tab
 $('a').each(function () {
@@ -234,3 +257,6 @@ $(".notification-dismiss").on("click", function () {
   var ref = $(this).data("ref");
   $("#" + ref).addClass("hidden");
 });
+
+// Theme toggle button
+handleToggleTheme();
