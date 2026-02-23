@@ -83,7 +83,7 @@ $toc-color-hover-dark: darken($primary, 20%);
   }
 }
 
-[data-theme='dark'] {
+[data-theme='light'] {
   @include light-theme-vars;
 }
 
