@@ -75,14 +75,19 @@ $toc-color-hover-dark: darken($primary, 20%);
   --toc-color-hover: #{$toc-color-hover-dark};
 }
 
+/* Default = light (fallback) */
 :root {
   @include light-theme-vars;
+}
 
-  @media (prefers-color-scheme: dark) {
+/* System preference (only if no manual choice) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
     @include dark-theme-vars;
   }
 }
 
+/* Manual overrides */
 [data-theme='light'] {
   @include light-theme-vars;
 }
