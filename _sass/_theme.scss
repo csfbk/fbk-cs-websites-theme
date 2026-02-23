@@ -41,6 +41,9 @@ $link-color-light-hover: darken($link-color-light, 20%);
 $link-color-dark: #2f7fba;
 $link-color-dark-hover: lighten($link-color-dark, 20%);
 
+$text-color: #4a4a4a;
+$text-color-dark: hsl(220, 16%, 89%);;
+
 $toc-color-hover-light: lighten($primary, 50%);
 $toc-color-hover-dark: darken($primary, 20%);
 
@@ -53,8 +56,8 @@ $toc-color-hover-dark: darken($primary, 20%);
   --link-color: #{$link-color-light};
   --link-color-hover: #{$link-color-light-hover};
   --navbar-separator: #{$navbar-separator};
-  --text-color: #4a4a4a;
-  --toc-color: #4a4a4a;
+  --text-color: #{$text-color};
+  --toc-color: #{$text-color};
   --toc-color-hover: #{$toc-color-hover-light};
 }
 
@@ -67,7 +70,7 @@ $toc-color-hover-dark: darken($primary, 20%);
   --link-color: #{$link-color-dark};
   --link-color-hover: #{$link-color-dark-hover};
   --navbar-separator: #{$navbar-separator-dark};
-  --text-color: hsl(220, 16%, 89%);
+  --text-color: #{$text-color-dark};
   --toc-color: #{$text-color-dark};
   --toc-color-hover: #{$toc-color-hover-dark};
 }
