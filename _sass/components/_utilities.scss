@@ -1,0 +1,45 @@
+.hidden { display: none; }
+.text-center, .text-centered { text-align: center; }
+.pull-right { float: right; }
+ul.no-bullet { list-style-type: none; }
+
+.image-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.img-attachment {
+  float: left;
+  max-height: 150px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
+
+/* Icons */
+.contains-email:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f1fa"; }
+.contains-phone:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f095"; }
+.contains-skype:before { font-family: "Font Awesome 5 Brands"; content: "\f17e"; }
+.contains-Academia:before { font-family: "Academicons"; content: "\e9af"; }
+.contains-acm:before { font-family: "Academicons"; content: "\e93c"; }
+.contains-curriculum a:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f019"; }
+.contains-cv:before { font-family: "Academicons"; content: "\e9a5"; }
+.contains-dblp:before { font-family: "Academicons"; content: "\e94f"; }
+.contains-github:before { font-family: "Font Awesome 5 Brands"; font-weight: 900; content: "\f09b"; }
+.contains-ieee:before { font-family: "Academicons"; content: "\e929"; }
+.contains-googlescholar:before { font-family: "Academicons"; content: "\e9d4"; }
+.contains-linkedin:before { font-family: "Font Awesome 5 Brands"; content: "\f0e1"; }
+.contains-orcid:before { font-family: "Academicons"; content: "\e9d9"; }
+.contains-publons:before { font-family: "Academicons"; content: "\e937"; }
+.contains-researchgate:before { font-family: "Academicons"; content: "\e95e"; }
+.contains-twitter:before { font-family: "Font Awesome 5 Brands"; content: "\e61b"; }
+.contains-website:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0c1"; }

@@ -1,0 +1,114 @@
+.content table td,
+.content table th {
+  border: 1px solid var(--color-border);
+  border-width: 0 0 1px;
+}
+
+.bordered,
+table.bordered tr td {
+  border: 1px solid var(--color-border);
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.table-scrollable { overflow-x: auto; width: 100%; }
+.table-scrollable table { width: 100%; }
+
+/* Program Tables */
+table.program + table.program {
+  margin-top: 20px;
+}
+
+table.program tr td:first-child,
+table.program tr td:only-child {
+  width: 80%;
+}
+
+table.program tr td:last-child:not(:only-child) {
+  width: 20%;
+  text-align: center;
+}
+
+table.program tr.day td {
+  background-color: var(--color-cell-day);
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+table.program tr.session td {
+  background-color: var(--color-cell-session);
+  text-align: center;
+  font-size: medium;
+}
+
+table.program tr.session .chair {
+  margin-top: 3px;
+  font-size: smaller;
+  font-style: italic;
+}
+
+table.program tr.session .chair::before {
+  content: "Session Chair: ";
+}
+
+table.program tr.institutional td {
+  background-color: var(--color-cell-institutional);
+}
+
+table.program tr.recreational td {
+  background-color: var(--color-cell-recreational);
+}
+
+table.program tr.logistical td {
+  background-color: var(--color-cell-logistical);
+}
+
+table.program tr.session p,
+table.program td.keynote p,
+table.program td.paper p,
+table.program td.demo p,
+table.program td.poster p,
+table.program td.award p,
+table.program td.talk p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+table.program td.award p.name {
+  font-weight: bold;
+}
+
+table.program td p.title {
+  color: var(--color-text-primary);
+  font-size: medium;
+  font-weight: normal;
+}
+
+table.program .session td p.title {
+  font-weight: bold;
+}
+
+table.program td p.speakers,
+table.program td p.authors,
+table.program td p.links {
+  font-size: smaller;
+}
+
+table.program td p.links a.link~a.link::before {
+  content: " • ";
+}
+
+table.program td p.type {
+  font-size: smaller;
+  font-weight: bold;
+}
+
+table.program td p.location {
+  font-size: smaller;
+  font-style: italic;
+}
+
+table.program td p.location::before {
+  content: "Location: ";
+}

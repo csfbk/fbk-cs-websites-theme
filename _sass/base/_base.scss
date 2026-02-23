@@ -1,0 +1,58 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  transition: 0.2s ease;
+}
+
+section {
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  transition: 0.2s ease;
+}
+
+.section {
+  min-height: 800px;
+  padding: 2rem 1.5rem;
+
+  .logo {
+    padding-left: 10px;
+  }
+}
+
+hr {
+  background-color: var(--color-border);
+}
+
+#site-title,
+#set-title,
+#set-subtitle {
+  display: none;
+}
+
+.top-separator {
+  padding-top: 60px;
+  border-top: 1px solid var(--primary);
+  margin-top: 60px;
+}
+
+.logo {
+  max-height: 100px;
+}
+
+.button {
+  background-color: hsl(221, 14%, calc(9% + 5%)) !important;
+  border-color: hsl(221, 14%, calc(24% + 10%)) !important;
+  color: hsl(221, 14%, 93%) !important;
+}
+
+.contents {
+  box-shadow: var(--shadow-card);
+}
+
+.content blockquote {
+  background-color: var(--color-bg-surface);
+}

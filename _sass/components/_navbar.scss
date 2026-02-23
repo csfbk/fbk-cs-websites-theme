@@ -1,0 +1,37 @@
+.navbar {
+  background-color: var(--color-primary);
+  transition: 0.2s ease;
+}
+
+.navbar.is-primary {
+  border-bottom: 2px solid var(--color-navbar-separator);
+  transition: 0.2s ease;
+}
+
+a.navbar-item,
+a.navbar-link {
+  text-decoration: none;
+}
+
+/* FBK Logo */
+.navbar-end > .navbar-item.fbk-header {
+  .fbk-header-regular {
+    display: block;
+  }
+
+  .fbk-header-white {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-end > .navbar-item.fbk-header {
+    .fbk-header-regular {
+      display: none;
+    }
+
+    .fbk-header-white {
+      display: block;
+    }
+  }
+}

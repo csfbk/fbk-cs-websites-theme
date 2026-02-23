@@ -1,0 +1,33 @@
+#markdown-toc {
+  line-height: 1;
+}
+
+#markdown-toc,
+#markdown-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#markdown-toc a {
+  border-radius: 2px;
+  color: #4a4a4a;
+  display: block;
+  padding: 0.5em 0.75em;
+}
+
+.menu a:hover {
+  background-color: var(--toc-color-hover);
+  color: #363636;
+}
+
+.menu a.is-active {
+  background-color: #3273dc;
+  color: #fff;
+}
+
+.menu li ul {
+  border-left: 1px solid #dbdbdb;
+  margin: 0.75em;
+  padding-left: 0.75em;
+}
