@@ -121,157 +121,155 @@ function initTheme() {
 }
 
 // CODE
-$(document).on("ready", function() {
-  // Open external links in a new tab
-  $('a').each(function () {
-    var a = new RegExp('/' + window.location.host + '/');
-    if (!a.test(this.href) && this.href != "" && this.href != "#") {
-      $(this).click(function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        window.open(this.href, '_blank');
-      });
-    }
-  });
+// Open external links in a new tab
+$('a').each(function () {
+  var a = new RegExp('/' + window.location.host + '/');
+  if (!a.test(this.href) && this.href != "" && this.href != "#") {
+    $(this).click(function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.open(this.href, '_blank');
+    });
+  }
+});
 
-  // Handle iframe in a responsive way
-  if ($("iframe").length > 0) {
+// Handle iframe in a responsive way
+if ($("iframe").length > 0) {
+  iframe16vs9();
+
+  $(window).resize(function () {
     iframe16vs9();
-
-    $(window).resize(function () {
-      iframe16vs9();
-    });
-  }
-
-  // Insert all tables into a scrollable div
-  if ($("table").length > 0) {
-    $("table").wrap("<div class='table-scrollable'></div>");
-  }
-
-  // Handle TOC generation
-  if ($("#toc").length > 0) {
-    $("#toc").html(' \
-        <nav> \
-            <div class="contents"> \
-                <div class="menu" markdown="1"> \
-                    <p class="menu-label">Contents</p> \
-                </div> \
-            </div> \
-        </nav> \
-    ');
-
-    $("#toc nav .contents .menu").append('<ul id="markdown-toc"></ul>');
-
-    if ($(":header:not(.no-toc)").length > 0) {
-      var prevH1List = null;
-      var prevH1Item = null;
-      var prevH2List = null;
-      var prevH2Item = null;
-      var prevH3List = null;
-
-      $(":header:not(.no-toc)").each(function (index) {
-        if ($(this).attr("id") == undefined) {
-          var id = $(this).text().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').toLowerCase();
-          $(this).attr("id", id);
-        }
-
-        if ($("#markdown-toc li[data-ref='#" + $(this).attr("id") + "'").length == 0) {
-          var text = $(this).clone();
-          text.find(".no-toc").remove();
-          text = $(text).html().trim();
-          var toAppend = $('<li data-ref="#' + $(this).attr("id") + '"><a href="#' + $(this).attr("id") + '">' + text + '</a></li>');
-
-          if ($(this).is("h1")) {
-            prevH1List = $("#markdown-toc");
-            $(prevH1List).append(toAppend);
-            prevH1Item = toAppend;
-            prevH2List = null;
-          } else if ($(this).is("h2")) {
-            if (prevH2List == null) {
-              prevH2List = $("<ul></ul>");
-              $(prevH1Item).append(prevH2List);
-            }
-            $(prevH2List).append(toAppend);
-            prevH2Item = toAppend;
-            prevH3List = null;
-          } else {
-            if (prevH3List == null) {
-              prevH3List = $("<ul></ul>");
-              $(prevH2Item).append(prevH3List);
-            }
-            $(prevH3List).append(toAppend);
-          }
-        }
-      });
-    }
-
-    if ($("#markdown-toc li").length == 0) {
-      $("#toc nav").remove();
-    }
-  }
-
-  // Set the hero title, if a value is set in the #set-title element
-  if ($("#set-title").length == 1) {
-    var title = $("#set-title").text();
-    var siteTitle = $("#site-title").text();
-    $(".hero-body .title:first").text(title);
-    $(document).prop("title", title + " - " + siteTitle);
-  }
-
-  // Set the hero subtitle, if a value is set in the #set-subtitle element
-  if ($("#set-subtitle").length == 1) {
-    var subtitle = $("#set-subtitle").text();
-    $(".hero-body .subtitle:first").text(subtitle);
-  }
-
-  // Filter based on URL parameters
-  if ($(".filter.filter-tag").length > 0) {
-    var parameterUnits = getURLParameter("units");
-    var parameterTopics = getURLParameter("topics");
-
-    if (parameterUnits !== null) {
-      parameterUnits.forEach(function (unit) {
-        if (!$(".filter.filter-tag[data-id-tag='" + unit + "']").hasClass("filter-selected")) {
-          $(".filter.filter-tag[data-id-tag='" + unit + "']").addClass("filter-selected");
-        }
-      });
-    } else if (parameterTopics !== null) {
-      parameterTopics.forEach(function (topic) {
-        if (!$(".filter.filter-tag[data-id-tag='" + topic + "']").hasClass("filter-selected")) {
-          $(".filter.filter-tag[data-id-tag='" + topic + "']").addClass("filter-selected");
-        }
-      });
-    }
-
-    updateItemsBasedOnFilter();
-  }
-
-  // Filter based on click
-  if ($(".filter.filter-tag").length > 0) {
-    $(".filter.filter-tag").on("click", function () {
-      $(this).toggleClass("filter-selected");
-      updateItemsBasedOnFilter();
-    });
-  }
-
-  // Update number of publications
-  if ($("ul.publications").length > 0) {
-    updateNumberOfPublications();
-  }
-
-  // Theme toggle button
-  initTheme();
-
-  const urlReferrerParameter = getURLParameter("referrer");
-  if (urlReferrerParameter !== null) {
-    const urlReferrer = urlReferrerParameter[0];
-
-    $("#notification-referrer a").attr("href", urlReferrer);
-    $("#notification-referrer").removeClass("hidden");
-  }
-
-  $(".notification-dismiss").on("click", function () {
-    var ref = $(this).data("ref");
-    $("#" + ref).addClass("hidden");
   });
+}
+
+// Insert all tables into a scrollable div
+if ($("table").length > 0) {
+  $("table").wrap("<div class='table-scrollable'></div>");
+}
+
+// Handle TOC generation
+if ($("#toc").length > 0) {
+  $("#toc").html(' \
+      <nav> \
+          <div class="contents"> \
+              <div class="menu" markdown="1"> \
+                  <p class="menu-label">Contents</p> \
+              </div> \
+          </div> \
+      </nav> \
+  ');
+
+  $("#toc nav .contents .menu").append('<ul id="markdown-toc"></ul>');
+
+  if ($(":header:not(.no-toc)").length > 0) {
+    var prevH1List = null;
+    var prevH1Item = null;
+    var prevH2List = null;
+    var prevH2Item = null;
+    var prevH3List = null;
+
+    $(":header:not(.no-toc)").each(function (index) {
+      if ($(this).attr("id") == undefined) {
+        var id = $(this).text().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').toLowerCase();
+        $(this).attr("id", id);
+      }
+
+      if ($("#markdown-toc li[data-ref='#" + $(this).attr("id") + "'").length == 0) {
+        var text = $(this).clone();
+        text.find(".no-toc").remove();
+        text = $(text).html().trim();
+        var toAppend = $('<li data-ref="#' + $(this).attr("id") + '"><a href="#' + $(this).attr("id") + '">' + text + '</a></li>');
+
+        if ($(this).is("h1")) {
+          prevH1List = $("#markdown-toc");
+          $(prevH1List).append(toAppend);
+          prevH1Item = toAppend;
+          prevH2List = null;
+        } else if ($(this).is("h2")) {
+          if (prevH2List == null) {
+            prevH2List = $("<ul></ul>");
+            $(prevH1Item).append(prevH2List);
+          }
+          $(prevH2List).append(toAppend);
+          prevH2Item = toAppend;
+          prevH3List = null;
+        } else {
+          if (prevH3List == null) {
+            prevH3List = $("<ul></ul>");
+            $(prevH2Item).append(prevH3List);
+          }
+          $(prevH3List).append(toAppend);
+        }
+      }
+    });
+  }
+
+  if ($("#markdown-toc li").length == 0) {
+    $("#toc nav").remove();
+  }
+}
+
+// Set the hero title, if a value is set in the #set-title element
+if ($("#set-title").length == 1) {
+  var title = $("#set-title").text();
+  var siteTitle = $("#site-title").text();
+  $(".hero-body .title:first").text(title);
+  $(document).prop("title", title + " - " + siteTitle);
+}
+
+// Set the hero subtitle, if a value is set in the #set-subtitle element
+if ($("#set-subtitle").length == 1) {
+  var subtitle = $("#set-subtitle").text();
+  $(".hero-body .subtitle:first").text(subtitle);
+}
+
+// Filter based on URL parameters
+if ($(".filter.filter-tag").length > 0) {
+  var parameterUnits = getURLParameter("units");
+  var parameterTopics = getURLParameter("topics");
+
+  if (parameterUnits !== null) {
+    parameterUnits.forEach(function (unit) {
+      if (!$(".filter.filter-tag[data-id-tag='" + unit + "']").hasClass("filter-selected")) {
+        $(".filter.filter-tag[data-id-tag='" + unit + "']").addClass("filter-selected");
+      }
+    });
+  } else if (parameterTopics !== null) {
+    parameterTopics.forEach(function (topic) {
+      if (!$(".filter.filter-tag[data-id-tag='" + topic + "']").hasClass("filter-selected")) {
+        $(".filter.filter-tag[data-id-tag='" + topic + "']").addClass("filter-selected");
+      }
+    });
+  }
+
+  updateItemsBasedOnFilter();
+}
+
+// Filter based on click
+if ($(".filter.filter-tag").length > 0) {
+  $(".filter.filter-tag").on("click", function () {
+    $(this).toggleClass("filter-selected");
+    updateItemsBasedOnFilter();
+  });
+}
+
+// Update number of publications
+if ($("ul.publications").length > 0) {
+  updateNumberOfPublications();
+}
+
+// Theme toggle button
+initTheme();
+
+const urlReferrerParameter = getURLParameter("referrer");
+if (urlReferrerParameter !== null) {
+  const urlReferrer = urlReferrerParameter[0];
+
+  $("#notification-referrer a").attr("href", urlReferrer);
+  $("#notification-referrer").removeClass("hidden");
+}
+
+$(".notification-dismiss").on("click", function () {
+  var ref = $(this).data("ref");
+  $("#" + ref).addClass("hidden");
 });
