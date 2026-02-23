@@ -29,6 +29,7 @@ $hero-darken: $dark !default;
 @import "components/tooltips";
 @import "components/typography";
 @import "components/utilities";
+@import "theme";
 
 @import "../node_modules/bulma-block-list/src/block-list.scss";
 
