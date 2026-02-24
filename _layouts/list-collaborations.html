@@ -19,9 +19,11 @@ show_sidebar: false
 {% endif %}
 
 <div class="columns is-multiline collaborations">
-    <div class="column is-12">
-        {{ content }}
-    </div>
+    {% if content %}
+        <div class="column is-12">
+            {{ content }}
+        </div>
+    {% endif %}
 
     <div class="column is-12">
         {% if site.data.collaborations %}
