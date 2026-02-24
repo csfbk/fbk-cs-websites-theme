@@ -253,7 +253,7 @@
                         {% if type %}<p class="subtitle type is-4">{{ type }}</p>{% endif %}
                         {% if details contains "unit" or details contains "institution" or details contains "place" %}
                             {% for affiliation in person.affiliations %}
-                                <div class="affiliation{% if person.affiliations.size > 1 %} more{% endif %} mt-1 mb-1">
+                                <div class="affiliation{% if person.affiliations.size > 1 %} more{% endif %} mt-3 mb-3">
                                     {% if affiliation.role and details contains "role" %}<p class="subtitle affiliation role is-4">{{ affiliation.role }}</p>{% endif %}
                                     {% unless affiliationsCS contains affiliation.unit %}
                                         {% if affiliation.unit and details contains "unit" %}<p class="subtitle affiliation unit is-4">{{ affiliation.unit }}</p>{% endif %}
