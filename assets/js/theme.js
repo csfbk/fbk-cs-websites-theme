@@ -110,14 +110,11 @@ function toggleTheme() {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem("theme");
-  if (saved) {
-    document.documentElement.setAttribute("data-theme", saved);
-  }
-
   updateThemeIcon(getEffectiveTheme());
 
-  document.querySelector(".theme-toggle").addEventListener("click", toggleTheme);
+  document
+    .querySelector(".theme-toggle")
+    .addEventListener("click", toggleTheme);
 }
 
 // CODE

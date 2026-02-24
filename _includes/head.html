@@ -7,6 +7,16 @@
     {%- else -%}
         <title>{{ page.title }} - {{ site.title }}</title>
     {%- endif %}
+
+    <script>
+        (function () {
+        const saved = localStorage.getItem("theme");
+        if (saved) {
+            document.documentElement.setAttribute("data-theme", saved);
+        }
+        })();
+    </script>
+
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/app.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/theme.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
