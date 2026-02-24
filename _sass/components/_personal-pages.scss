@@ -103,7 +103,7 @@
 
 .single-fbkperson .additional-info-wrapper .section-title {
   background: var(--color-tooltip-bg);
-  color: var(--color-text-inverse);
+  color: var(--color-text-primary);
   font-weight: 500;
   margin-bottom: 10px;
   padding: 4px 10px;
@@ -132,6 +132,7 @@
 
 .single-fbkperson .additional-info-wrapper ul.people-contacts-list li:before,
 .single-fbkperson .additional-info-wrapper ul.people-links-list li:before {
+  color: var(--color-text-secondary);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal;

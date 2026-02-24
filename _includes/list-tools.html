@@ -84,7 +84,7 @@
         {% if style == "card" %}
             <div class="column tool is-full-mobile is-half-tablet is-{{ cols }}-desktop" data-tags="{{ tool.units | join: "|" }}">
                 {% if urlDocumentation %}
-                <a href="{{ urlDocumentation }}">
+                <a class="no-decoration" href="{{ urlDocumentation }}">
                 {% endif %}
                     <div class="card tool">
                         <div class="card-image">

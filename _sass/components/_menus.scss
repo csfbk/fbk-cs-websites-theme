@@ -18,6 +18,7 @@
 
 .menu a {
   color: var(--color-text-primary);
+  text-decoration: none;
 }
 
 .menu a:hover {
@@ -31,7 +32,7 @@
 }
 
 .menu li ul {
-  border-left: 1px solid #dbdbdb;
+  border-left: 1px solid var(--color-border);
   margin: 0.75em;
   padding-left: 0.75em;
 }
