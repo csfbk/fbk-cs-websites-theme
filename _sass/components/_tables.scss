@@ -1,5 +1,7 @@
 .content table td,
-.content table th {
+.content table th,
+.content table thead td,
+.content table thead th {
   border: 1px solid var(--color-border);
   border-width: 0 0 1px;
   color: var(--color-text-primary);

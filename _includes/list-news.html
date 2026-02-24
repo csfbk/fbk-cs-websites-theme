@@ -61,7 +61,7 @@
                 {% assign customExcerpt = post.excerpt %}
             {% endif %}
                 
-            <li class="item post">
+            <li class="mb-2">
                 {{ post.date | date: "%B %e, %Y" }}: <a href="{{ post.url }}"><b>{{ post.title }}</b></a>{%- for tag in post.tags -%}&nbsp;<span class="tag tag-{{ tag }} is-light">{{ tag }}</span>{%- endfor -%}
                 {% if customExcerpt %}
                 <ul class="description">
