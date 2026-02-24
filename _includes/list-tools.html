@@ -134,7 +134,7 @@
                 {% endif %}
             </div>
         {% elsif style == "list" %}
-            <li class="mb-2" data-tags="{{ tool.units | join: "|" }}">
+            <li class="mb-4" data-tags="{{ tool.units | join: "|" }}">
                 <b>{{ tool.name }}</b> {% if tool.nameAddon %}({{ tool.nameAddon }}){% endif %}{{ linksString }}
                 {% if tool.description and details contains "description" %}
                 <ul class="description no-bullet">

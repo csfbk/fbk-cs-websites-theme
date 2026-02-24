@@ -1,7 +1,4 @@
-.menu-list a.is-active {
-  background-color: var(--primary);
-  color: #fff;
-}
+
 
 .affiliation.more+.affiliation.more {
   border-top: 2px solid var(--color-border);

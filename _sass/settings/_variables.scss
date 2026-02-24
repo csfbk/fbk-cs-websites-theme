@@ -81,7 +81,7 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-border-strong: hsl(221, 14%, 28%);
 
   --color-accent: #6cb2ff;
-  --color-accent-hover: darken(#6cb2ff, 30%);
+  --color-accent-hover: #{darken(#6cb2ff, 30%)};
 
   --color-navbar-separator: #041e31;
   --color-tooltip-bg: hsl(221, 14%, 24%);

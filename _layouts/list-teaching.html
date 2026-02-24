@@ -41,7 +41,7 @@ show_sidebar: false
             {% endfor %}
 
             {% if courses_BSc_MSc.size > 0 %}
-                <section class="bsc-msc-courses mt-2 mb-2">
+                <section class="bsc-msc-courses mt-6 mb-6">
                     <h2>Bachelor's and Master's Courses</h2>
                     {% include list-teaching.html source=courses_BSc_MSc sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
@@ -49,7 +49,7 @@ show_sidebar: false
 
             {% assign courses_PhD = site.data.teaching | where_exp: "course", "course.level contains 'PhD'" %}
             {% if courses_PhD.size > 0 %}
-                <section class="phd-courses mt-2 mb-2">
+                <section class="phd-courses mt-6 mb-6">
                     <h2>PhD Courses</h2>
                     {% include list-teaching.html source=courses_PhD sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
@@ -57,7 +57,7 @@ show_sidebar: false
 
             {% assign courses_highSchools = site.data.teaching | where_exp: "course", "course.level contains 'High School'" %}
             {% if courses_highSchools.size > 0 %}
-                <section class="high-school-courses mt-2 mb-2">
+                <section class="high-school-courses mt-6 mb-6">
                     <h2>High School Courses</h2>
                     {% include list-teaching.html source=courses_highSchools sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>
@@ -65,7 +65,7 @@ show_sidebar: false
 
             {% assign courses_other = site.data.teaching | where_exp: "course", "course.level == nil" %}
             {% if courses_other.size > 0 %}
-                <section class="other-courses mt-2 mb-2">
+                <section class="other-courses mt-6 mb-6">
                     <h2>Other Courses</h2>
                     {% include list-teaching.html source=courses_other sort_by=sort_by sort_natural=sort_natural sort_reverse=sort_reverse style=style %}
                 </section>

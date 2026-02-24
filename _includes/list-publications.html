@@ -97,7 +97,7 @@
         {%- else -%}
             {%- assign linksString = "" -%}
         {%- endif -%}
-        <li class="mb-2" data-tags="{{ publication.tags | join: "|" }}">
+        <li class="mb-4" data-tags="{{ publication.tags | join: "|" }}">
             {{ authorsString }}<br />
             <b>{{ publication.title }}</b><br />
             {{ destinationString }}{{ linksString }}
