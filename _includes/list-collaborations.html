@@ -69,7 +69,7 @@
                     <a href="{{ url }}">
                         <div class="card enterprise">
                             <div class="card-image">
-                                <figure class="image">
+                                <figure class="image ml-0 mr-l">
                                     {% if collaboration.logo %}
                                         {% capture collaborationLogo %}
                                             {% include collection-logo.html element=collaboration collection="collaboration" %}
@@ -100,7 +100,7 @@
                     </a>
                 </div>
             {% elsif style == "list" %}
-                <li class="item collaboration">
+                <li class="collaboration">
                     <a href="{{ url }}">
                         <b>{{ collaboration.name }}</b>
                     </a>

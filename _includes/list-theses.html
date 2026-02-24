@@ -92,7 +92,7 @@
                 {%- assign detailsString = nil -%}
             {%- endif -%}
 
-            <li>
+            <li class="mt-1" >
                 {% if author %}{{ author.name }} {{ author.surname }}{% if detailsString %} ({{ detailsString }}){% endif %}<br />{% endif %}
                 <b>{{ publication.title }}</b>{% if publication.doi or publication.link %} (<a href="{% if publication.doi %}https://doi.org/{{ publication.doi }}{% else %}{{ publication.link }}{% endif %}">link</a>){% endif %}<br />
                 {% if supervisorsString %}Supervisor{% if supervisors.size > 1 %}s{% endif %}: {{ supervisorsString }}{% if cosupervisorsString %} |{% endif %}{% endif %}

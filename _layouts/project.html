@@ -33,11 +33,11 @@ layout: page
                 {% include collection-logo.html element=project collection="project" %}
             {% endcapture %}
             {% if projectLogo contains ".svg" %}
-                <svg class="logo pull-right">
+                <svg class="logo pull-right mt-1">
                     <use href="{{ projectLogo }}"/>
                 </svg>
             {% else %}
-                <img class="logo pull-right" src="{{ projectLogo }}" />
+                <img class="logo pull-right mt-1" src="{{ projectLogo }}" />
             {% endif %}
         {% endif %}
         {% if content.size > 1 %}

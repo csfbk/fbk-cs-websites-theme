@@ -88,7 +88,7 @@
                 {% endif %}
                     <div class="card tool">
                         <div class="card-image">
-                            <figure class="image">
+                            <figure class="image ml-0 mr-l">
                                 {% if tool.logo %}
                                     {% capture toolLogo %}
                                         {% include collection-logo.html element=tool collection="tool" %}
@@ -134,10 +134,10 @@
                 {% endif %}
             </div>
         {% elsif style == "list" %}
-            <li class="item tool" data-tags="{{ tool.units | join: "|" }}">
+            <li class="tool mt-1 bt-2" data-tags="{{ tool.units | join: "|" }}">
                 <b>{{ tool.name }}</b> {% if tool.nameAddon %}({{ tool.nameAddon }}){% endif %}{{ linksString }}
                 {% if tool.description and details contains "description" %}
-                <ul class="description">
+                <ul class="description no-bullet">
                     <li>{{ tool.description }}</li>
                 </ul>
                 {% endif %}
