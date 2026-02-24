@@ -66,11 +66,11 @@
             {% if style == "card" %}
                 <div class="column project is-full-mobile is-half-tablet is-{{ cols }}-desktop" data-tags="{{ project.units | join: "|" }}">
                     {% if url %}
-                    <a href="{{ url }}">
+                    <a class="no-decoration" href="{{ url }}">
                     {% endif %}
                         <div class="card project">
                             <div class="card-image">
-                                <figure class="image">
+                                <figure class="image ml-0 mr-l">
                                     {% if project.logo %}
                                         {% capture projectLogo %}
                                             {% include collection-logo.html element=project collection="project" %}
@@ -116,7 +116,7 @@
                     {% endif %}
                 </div>
             {% elsif style == "list" %}
-                <li class="item project" data-tags="{{ project.units | join: "|" }}">
+                <li class="mb-4" data-tags="{{ project.units | join: "|" }}">
                     {% if url %}
                     <a href="{{ url }}">
                     {% endif %}

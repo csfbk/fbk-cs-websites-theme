@@ -1,0 +1,96 @@
+$primary-h: hue($primary);
+$primary-s: saturation($primary);
+$primary-l: lightness($primary);
+
+$dark-mode-desaturation-amount: 15%;
+$dark-mode-lighten-amount: -20%;
+$dark-mode-min-lightness: 15%;
+
+$primary-dark-hsl-components: get-dark-mode-hsl-components($primary);
+$primary-dark-h: map-get($primary-dark-hsl-components, h);
+$primary-dark-s: map-get($primary-dark-hsl-components, s);
+$primary-dark-l: map-get($primary-dark-hsl-components, l);
+$primary-dark: hsl($primary-dark-h, $primary-dark-s, $primary-dark-l);
+
+$navbar-separator: darken($primary, 5%);
+$navbar-separator-dark: darken($primary-dark, 5%);
+
+$text-color: #4a4a4a;
+$text-color-dark: hsl(220, 16%, 89%);;
+
+$toc-color-hover-light: lighten($primary, 50%);
+$toc-color-hover-dark: darken($primary, 20%);
+
+@mixin light-theme-vars {
+  --bulma-hero-h: #{$primary-h};
+  --bulma-hero-s: #{$primary-s};
+  --bulma-hero-background-l: #{$primary-l};
+  --toc-color: #{$text-color};
+  --toc-color-hover: #{$toc-color-hover-light};
+
+  /*---*/
+  --color-primary: #{$primary};
+
+  --color-bg-page: #ffffff;
+  --color-bg-surface: #f5f5f5;
+  --color-bg-elevated: #ffffff;
+
+  --color-text-primary: #363636;
+  --color-text-secondary: #4a4a4a;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #dbdbdb;
+  --color-border-strong: #c7c7c7;
+
+  --color-accent: #{$primary};
+  --color-accent-hover: darken($primary, 20%);
+
+  --color-navbar-separator: #00599b;
+  --color-tooltip-bg: #555;
+
+  --color-cell-day: #FFCCC9;
+  --color-cell-session: #CBCEFB;
+  --color-cell-institutional: #f7f7d0;
+  --color-cell-recreational: #def5ce;
+  --color-cell-logistical: #ceecf5;
+
+  --shadow-card: 0 .5em 1em -.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  --shadow-card-hover: 0 0 1em rgba(0, 104, 180), 0 0px 0 10px rgba(10, 10, 10, 0.02);
+}
+
+@mixin dark-theme-vars {
+  --bulma-hero-h: #{$primary-h};
+  --bulma-hero-s: #{$primary-dark-s};
+  --bulma-hero-background-l: #{$primary-dark-l};
+  --toc-color: #{$text-color-dark};
+  --toc-color-hover: #{$toc-color-hover-dark};
+
+  /*****/
+
+  --color-primary: #{$primary-dark};
+
+  --color-bg-page: hsl(221, 14%, 9%);
+  --color-bg-surface: hsl(221, 14%, 14%);
+  --color-bg-elevated: hsl(221, 14%, 11%);
+
+  --color-text-primary: hsl(221, 14%, 93%);
+  --color-text-secondary: hsl(221, 14%, 80%);
+  --color-text-inverse: #000;
+
+  --color-border: hsl(221, 14%, 24%);
+  --color-border-strong: hsl(221, 14%, 28%);
+
+  --color-accent: #6cb2ff;
+  --color-accent-hover: #{darken(#6cb2ff, 30%)};
+
+  --color-navbar-separator: #041e31;
+  --color-tooltip-bg: hsl(221, 14%, 24%);
+
+  --color-cell-day: transparent;
+  --color-cell-session: transparent;
+  --color-cell-institutional: transparent;
+  --color-cell-recreational: transparent;
+  --color-cell-logistical: transparent;
+
+  --shadow-card: 0 .5em 1em -.125em rgba(225,225,225,.1), 0 0px 0 1px rgba(225,225,225,.02);
+}

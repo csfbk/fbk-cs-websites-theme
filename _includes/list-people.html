@@ -242,7 +242,7 @@
                         
                         {% if personImage != "" %}
                             <div class="card-image">
-                                <figure class="image">
+                                <figure class="image ml-0 mr-l">
                                     <img src="{{ personImage }}" alt="{{ person.name }} {{ person.surname }}" onError="setDefaultUserPicture(this)" />
                                 </figure>
                             </div>
@@ -253,7 +253,7 @@
                         {% if type %}<p class="subtitle type is-4">{{ type }}</p>{% endif %}
                         {% if details contains "unit" or details contains "institution" or details contains "place" %}
                             {% for affiliation in person.affiliations %}
-                                <div class="affiliation{% if person.affiliations.size > 1 %} more{% endif %}">
+                                <div class="affiliation{% if person.affiliations.size > 1 %} more{% endif %} mt-3 mb-3">
                                     {% if affiliation.role and details contains "role" %}<p class="subtitle affiliation role is-4">{{ affiliation.role }}</p>{% endif %}
                                     {% unless affiliationsCS contains affiliation.unit %}
                                         {% if affiliation.unit and details contains "unit" %}<p class="subtitle affiliation unit is-4">{{ affiliation.unit }}</p>{% endif %}
@@ -278,7 +278,7 @@
                         {% if thesis.title and details contains "thesis" %}<p class="subtitle thesis is-4">Thesis: {{ thesis.title }}</p>{% endif %}
                         <div class="links">
                             {% if person.email and details contains "email" %}
-                                <a href="mailto:{{ person.email }}">
+                                <a class="no-decoration" href="mailto:{{ person.email }}">
                                     <span class="fa-stack" style="vertical-align: top;">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fas fa-at fa-stack-1x fa-inverse"></i>
@@ -287,7 +287,7 @@
                             {% endif %}
 
                             {% if person.phone and details contains "phone" %}
-                                <a href="tel:{{ person.phone }}">
+                                <a class="no-decoration" href="tel:{{ person.phone }}">
                                     <span class="fa-stack" style="vertical-align: top;">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fas fa-phone fa-stack-1x fa-inverse"></i>
@@ -314,7 +314,7 @@
                                     {% endif %}
                                 {% endif %}
                                 {% if personFullURL %}
-                                    <a href="{{ site.baseurl }}{{ personFullURL }}">
+                                    <a class="no-decoration" href="{{ site.baseurl }}{{ personFullURL }}">
                                         <span class="fa-stack" style="vertical-align: top;">
                                             <i class="fas fa-circle fa-stack-2x"></i>
                                             <i class="fas fa-id-card fa-stack-1x fa-inverse"></i>
@@ -334,7 +334,7 @@
                                     {% assign personWebsite = nil %}
                                 {% endif %}
                                 {% if personWebsite %}
-                                    <a href="{{ personWebsite }}">
+                                    <a class="no-decoration" href="{{ personWebsite }}">
                                         <span class="fa-stack" style="vertical-align: top;">
                                             <i class="fas fa-circle fa-stack-2x"></i>
                                             <i class="fas fa-link fa-stack-1x fa-inverse"></i>
@@ -389,7 +389,7 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-                <li>
+                <li class="mb-4">
                     {% if person.name and person.surname %}<b>{{ person.name }} {{ person.surname }}</b>{% endif %}{{ detailsString }}
                     {% if personFullURL %}
                         <a href="{{ site.baseurl }}{{ personFullURL }}">

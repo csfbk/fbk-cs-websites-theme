@@ -52,7 +52,7 @@ layout: default
 
                 {% assign strippedContent = content | strip %}
                 {% if strippedContent.size > 0 %}
-                    <section class="contains-bio">
+                    <section class="contains-bio mb-5">
                         {{ strippedContent }}
                     </section>
                 {% endif %}
@@ -63,7 +63,7 @@ layout: default
                 {% assign publications = site.data.publications | where_exp: "p", "p.authors contains page.person" | where_exp: "p", "p.id_iris != nil" %}
                 {% if publications and publications != empty %}
                     {% assign publicationsByYear = publications | group_by: "year" | sort: "name" | reverse %}
-                    <section class="contains-publications">
+                    <section class="contains-publications mb-4">
                         <h1>Publications</h1>
                         {% for group in publicationsByYear %}
                             <h4>{{ group.name }}</h4>
@@ -76,7 +76,7 @@ layout: default
                 {% assign theses = site.data.theses | where_exp: "t", "t.author == page.person" %}
                 {% if theses and theses != empty %}
                     {% assign theses = theses | sort: "year" | reverse %}
-                    <section class="contains-theses">
+                    <section class="contains-theses mb-4">
                         <h1>Theses</h1>
                         {% include list-theses.html source=theses %}
                     </section>
@@ -98,7 +98,7 @@ layout: default
                     {% endif %}
                 {% endfor %}
                 {% if currentProjects.size > 0 or formerProjects.size > 0 %}
-                    <section class="contains-projects">
+                    <section class="contains-projects mb-4">
                         <h1>Projects</h1>
                         {% if currentProjects.size > 0 %}
                             <h4>Current</h4>
@@ -115,7 +115,7 @@ layout: default
                 {% assign dissemination = site.data.dissemination | where_exp: "d", "d.participants contains page.person" %}
                 {% if dissemination and dissemination != empty %}
                     {% assign disseminationByDate = dissemination | group_by: "startDate" | sort: "name" | reverse %}
-                    <section class="contains-dissemination">
+                    <section class="contains-dissemination mb-4">
                         <h1>Dissemination</h1>
                         {% assign seenYear = "" %}
                         {% for group in disseminationByDate %}
@@ -138,7 +138,7 @@ layout: default
                 {% endfor %}
                 {% if supervisedTheses and supervisedTheses != empty %}
                     {% assign supervisedByYear = supervisedTheses | group_by: "year" | sort: "name" | reverse %}
-                    <section class="contains-supervised-theses">
+                    <section class="contains-supervised-theses mb-4">
                         <h1>Supervised Theses</h1>
                         {% for group in supervisedByYear %}
                             <h4>{{ group.name }}</h4>

@@ -1,0 +1,163 @@
+.single-fbkperson section {
+  margin: 0 0 24px;
+}
+
+.single-fbkperson ul.people-contacts-list,
+.single-fbkperson ul.people-links-list {
+  margin: 0;
+  padding: 0;
+}
+
+.single-fbkperson .profile-thumb {
+  display: table;
+  margin: 0 auto;
+}
+
+.single-fbkperson .profile-thumb img {
+  border-radius: 50%;
+  float: left;
+  margin: 0 0 20px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.single-fbkperson .contains-organisation {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.single-fbkperson .contains-people-associations ul li {
+  display: inline-block;
+  padding: 0 16px 0 0;
+}
+
+.single-fbkperson .contains-people-associations ul li .category,
+.single-fbkperson .contains-people-associations ul li .unit {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.single-fbkperson .contains-people-associations ul li .category {
+  background-color: rgba(144, 156, 194, .8);
+  color: #fff;
+  display: inline-block;
+  font-size: 1em;
+  margin: 0;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.single-fbkperson .contains-people-associations ul li .unit {
+  background-color: rgba(144, 156, 194, .8);
+  color: #fff;
+  display: inline-block;
+  font-size: .9em;
+  margin: 0 0 0 4px;
+  padding: 2px 8px;
+}
+
+.single-fbkperson .contains-people-associations ul li .unit:hover {
+  background-color: #909cc2;
+}
+
+.single-fbkperson .contains-bio {
+  background-color: var(--color-bg-surface);
+  border-left: 5px solid #dbdbdb;
+  padding: 1.25em 1.5em;
+}
+
+.single-fbkperson ul.contains-person-interests li {
+  display: inline;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.single-fbkperson ul.contains-person-interests li:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  position: relative;
+  text-decoration: inherit;
+  text-rendering: auto;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f02b";
+  font-size: 16px;
+  margin: 0 2px 0 8px;
+  vertical-align: middle;
+}
+
+.single-fbkperson .additional-info-wrapper {
+  overflow: hidden;
+  padding: 10px 20px 20px;
+}
+
+.single-fbkperson .additional-info-wrapper .section-title,
+.single-fbkperson .additional-info-wrapper ul {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.single-fbkperson .additional-info-wrapper .section-title {
+  background: var(--color-tooltip-bg);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+
+.single-fbkperson .additional-info-wrapper ul {
+  margin-bottom: 20px
+}
+
+.single-fbkperson .additional-info-wrapper ul li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.single-fbkperson .additional-info-wrapper ul.people-contacts-list li,
+.single-fbkperson .additional-info-wrapper ul.people-links-list li {
+  list-style: none
+}
+
+.single-fbkperson .additional-info-wrapper ul.people-contacts-list li a,
+.single-fbkperson .additional-info-wrapper ul.people-links-list li a {
+  vertical-align: middle
+}
+
+.single-fbkperson .additional-info-wrapper ul.people-contacts-list li:before,
+.single-fbkperson .additional-info-wrapper ul.people-links-list li:before {
+  color: var(--color-text-secondary);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  position: relative;
+  text-decoration: inherit;
+  text-rendering: auto;
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 6px;
+  text-align: center;
+  vertical-align: middle;
+  width: 20px
+}
+
+.single-fbkperson .contains-curriculum {
+  margin: 20px 0 40px
+}
+
+.single-fbkperson .contains-curriculum a {
+  border: 1px solid #275475;
+  color: #275475;
+  padding: 10px 16px
+}
+
+.single-fbkperson .contains-curriculum a:hover {
+  background: #275475;
+  color: #fff
+}

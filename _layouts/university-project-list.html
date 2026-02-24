@@ -4,9 +4,11 @@ show_sidebar: false
 ---
 
 <div class="columns is-multiline">
-    <div class="column is-12">
-        {{ content }}
-    </div>
+    {% if content %}
+        <div class="column is-12">
+            {{ content }}
+        </div>
+    {% endif %}
 
     <div class="column is-12">
         {% include list-university-projects.html source=page.university-projects %}

@@ -84,6 +84,39 @@ function appendReferrerURI(link) {
   return link;
 }
 
+function getEffectiveTheme() {
+  const manual = document.documentElement.getAttribute("data-theme");
+  if (manual) return manual;
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function updateThemeIcon(theme) {
+  const icon = document.querySelector(".theme-toggle-icon");
+  icon.classList.remove("fa-sun", "fa-moon");
+  icon.classList.add(theme === "dark" ? "fa-sun" : "fa-moon");
+}
+
+function toggleTheme() {
+  const current = getEffectiveTheme();
+  const next = current === "dark" ? "light" : "dark";
+
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+
+  updateThemeIcon(next);
+}
+
+function initTheme() {
+  updateThemeIcon(getEffectiveTheme());
+
+  document
+    .querySelector(".theme-toggle")
+    .addEventListener("click", toggleTheme);
+}
+
 // CODE
 // Open external links in a new tab
 $('a').each(function () {
@@ -221,6 +254,9 @@ if ($(".filter.filter-tag").length > 0) {
 if ($("ul.publications").length > 0) {
   updateNumberOfPublications();
 }
+
+// Theme toggle button
+initTheme();
 
 const urlReferrerParameter = getURLParameter("referrer");
 if (urlReferrerParameter !== null) {

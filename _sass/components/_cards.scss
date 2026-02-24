@@ -1,0 +1,159 @@
+.card {
+  height: 100%;
+  border-radius: 20px;
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-card);
+  transition: 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  &.topic .card-image img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .title {
+    color: var(--color-text-primary);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+  }
+
+  .card-image img.default {
+    opacity: 0.3;
+    content: var(--logo-default);
+  }
+}
+
+.card.person {
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .role {
+    font-style: italic;
+  }
+
+  .card-image img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .card-image img {
+      margin-top: 30px;
+      width: 66%;
+      max-width: 200px;
+    }
+  }
+
+  
+
+  .card-content {
+    .links {
+      margin-top: 10px;
+    }
+
+    .topic,
+    .thesis {
+      font-style: italic;
+      margin-top: 10px;
+      font-size: .9rem;
+    }
+  }
+
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+/***/
+
+
+.card.person .subtitle,
+.card.unit .subtitle {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 1rem;
+}
+.card.person .card-content,
+  .card.unit .card-content {
+    text-align: center;
+    padding: 0.5rem 1.5rem 1.2rem;
+  }
+
+.card.project,
+.card.sponsor,
+.card.tool,
+.card.unit {
+  padding-top: 1.3em;
+}
+
+.card:not(.topic):not(.spotlight) .title {
+  font-size: 1.2rem;
+}
+
+
+
+.card.enterprise .card-image,
+.card.project .card-image,
+.card.sponsor .card-image,
+.card.tool .card-image,
+.card.unit .card-image {
+  padding: 20px;
+  height: 160px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card.enterprise .card-image img,
+.card.project .card-image img,
+.card.sponsor .card-image img,
+.card.tool .card-image img,
+.card.unit .card-image img {
+  max-height: 130px;
+  width: auto;
+}
+
+.card.enterprise .card-image svg,
+.card.project .card-image svg,
+.card.sponsor .card-image svg,
+.card.tool .card-image svg,
+.card.unit .card-image svg {
+  width: 100%;
+  fill: var(--text-color);
+}
+
+
+
+
+
+
+
+
+
+.card.unit .subtitle.acronym {
+  font-size: 1.2rem;
+}
+
+.card .card-content .units {
+  margin-bottom: 10px;
+}
+
+.card .card-content hr {
+  margin: 1rem 0;
+}

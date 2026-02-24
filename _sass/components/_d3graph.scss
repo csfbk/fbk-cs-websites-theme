@@ -1,0 +1,18 @@
+.d3graph-node-circle {
+  fill: var(--color-bg-page);
+}
+
+.d3graph-node-label {
+  fill: var(--color-text-primary);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25em;
+}
+
+.d3graph-node-icon {
+  fill: var(--color-text-primary);
+}
+
+.d3graph-connection-line {
+  stroke: var(--color-border);
+  stroke-opacity: 0.5;
+}
