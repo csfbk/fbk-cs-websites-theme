@@ -51,13 +51,9 @@ hr {
 }
 
 .button {
-  background-color: hsl(221, 14%, calc(9% + 5%)) !important;
-  border-color: hsl(221, 14%, calc(24% + 10%)) !important;
-  color: hsl(221, 14%, 93%) !important;
-}
-
-.contents {
-  box-shadow: var(--shadow-card);
+  background-color: var(--color-bg-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
 }
 
 .content blockquote {

@@ -300,11 +300,6 @@ li.item .description {
   }
 
   
-  .content table thead td, .content table thead th {
-    color: hsl(221deg, 14%, 93%) !important;
-  }
-
-  
 }
 /* END DARK THEME */
 

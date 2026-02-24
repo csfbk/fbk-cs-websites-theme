@@ -8,6 +8,11 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
+strong {
+  color: var(--color-text-primary);
+  transition: 0.2s ease;
+}
+
 a.button,
 a .fa-stack,
 .card .links a,
