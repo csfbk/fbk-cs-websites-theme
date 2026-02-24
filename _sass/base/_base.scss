@@ -23,6 +23,13 @@ section {
   }
 }
 
+footer,
+.footer {
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  transition: 0.2s ease;
+}
+
 hr {
   background-color: var(--color-border);
 }

@@ -16,26 +16,26 @@
             
                 <div class="content is-small has-text-centered company-data">
                     {% if site.entity_type == "unit" %}
-                        <p class="">{{ site.organization.unit.name | default: "Research Unit" }}</p>
-                        <p class="">{{ site.organization.center.name | default: "Research Center" }}</p>
+                        <p class="mb-0">{{ site.organization.unit.name | default: "Research Unit" }}</p>
+                        <p class="mb-0">{{ site.organization.center.name | default: "Research Center" }}</p>
                     {% elsif site.entity_type == "center" %}
-                        <p class="">{{ site.organization.center.name | default: "Research Center" }}</p>
+                        <p class="mb-0">{{ site.organization.center.name | default: "Research Center" }}</p>
                     {% endif %}
-                    <p class=""><a href="https://www.fbk.eu">Fondazione Bruno Kessler</a></p>
-                    <p class="">Via Sommarive, 18</p>
-                    <p class="">38123 Povo, Trento, Italy</p>
+                    <p class="mb-0"><a href="https://www.fbk.eu">Fondazione Bruno Kessler</a></p>
+                    <p class="mb-0">Via Sommarive, 18</p>
+                    <p class="mb-0">38123 Povo, Trento, Italy</p>
                 </div>
 
                 <div class="content is-small has-text-centered content-manager">
-                    <p class=""><b>Content Manager:</b></p>
-                    <p class="">{{ site.content-manager.name | default: "Content Manager Name" }}</p>
+                    <p class="mb-0"><b>Content Manager:</b></p>
+                    <p class="mb-0">{{ site.content-manager.name | default: "Content Manager Name" }}</p>
                     {% if site.content-manager.affiliation %}
-                        <p class="">{{ site.content-manager.affiliation | default: "Research Unit" }}</p>
+                        <p class="mb-0">{{ site.content-manager.affiliation | default: "Research Unit" }}</p>
                     {% endif %}
                     {% if site.content-manager.phone %}
-                        <p class="">Phone: {{ site.content-manager.phone }}</p>
+                        <p class="mb-0">Phone: {{ site.content-manager.phone }}</p>
                     {% endif %}
-                    <p class="">Email: {{ site.content-manager.email | default: "Content Manager Email" }}</p>
+                    <p class="mb-0">Email: {{ site.content-manager.email | default: "Content Manager Email" }}</p>
                 </div>
 
                 {% include follow.html %}

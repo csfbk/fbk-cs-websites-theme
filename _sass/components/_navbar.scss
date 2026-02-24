@@ -1,9 +1,5 @@
-.navbar {
-  background-color: var(--color-primary);
-  transition: 0.2s ease;
-}
-
 .navbar.is-primary {
+  background-color: var(--color-primary);
   border-bottom: 2px solid var(--color-navbar-separator);
   transition: 0.2s ease;
 }

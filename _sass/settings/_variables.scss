@@ -45,7 +45,7 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-accent: #{$primary};
   --color-accent-hover: darken($primary, 20%);
 
-  --color-navbar-separator: #dbdbdb;
+  --color-navbar-separator: #00599b;
   --color-tooltip-bg: #555;
 
   --color-cell-day: #FFCCC9;
@@ -67,7 +67,7 @@ $toc-color-hover-dark: darken($primary, 20%);
 
   /*****/
 
-  --color-primary: #{$primary-dark};  
+  --color-primary: #{$primary-dark};
 
   --color-bg-page: hsl(221, 14%, 9%);
   --color-bg-surface: hsl(221, 14%, 14%);
@@ -83,7 +83,7 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-accent: #6cb2ff;
   --color-accent-hover: lighten(#6cb2ff, 20%);
 
-  --color-navbar-separator: hsl(221, 14%, 24%);
+  --color-navbar-separator: #00599b;
   --color-tooltip-bg: hsl(221, 14%, 24%);
 
   --color-cell-day: transparent;
