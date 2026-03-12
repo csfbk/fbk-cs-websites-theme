@@ -22,6 +22,10 @@ table.program + table.program {
   margin-top: 20px;
 }
 
+table.program td {
+  vertical-align: middle;
+}
+
 table.program tr td:first-child,
 table.program tr td:only-child {
   width: 80%;

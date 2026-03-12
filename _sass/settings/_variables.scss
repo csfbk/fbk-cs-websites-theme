@@ -44,6 +44,9 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-accent: #{$primary};
   --color-accent-hover: #{darken($primary, 20%)};
 
+  --color-menu-active: #6cb2ff;
+  --color-menu-hover: #6cb2ff;
+
   --color-navbar-separator: #00599b;
   --color-tooltip-bg: #555;
 
@@ -79,6 +82,9 @@ $toc-color-hover-dark: darken($primary, 20%);
 
   --color-accent: #6cb2ff;
   --color-accent-hover: #{darken(#6cb2ff, 30%)};
+
+  --color-menu-active: var(--color-accent);
+  --color-menu-hover: var(--color-accent-hover);
 
   --color-navbar-separator: #041e31;
   --color-tooltip-bg: hsl(221, 14%, 24%);
