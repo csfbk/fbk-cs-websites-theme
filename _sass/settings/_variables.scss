@@ -28,7 +28,6 @@ $toc-color-hover-dark: darken($primary, 20%);
   --toc-color: #{$text-color};
   --toc-color-hover: #{$toc-color-hover-light};
 
-  /*---*/
   --color-primary: #{$primary};
 
   --color-bg-page: #ffffff;
@@ -39,11 +38,11 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-text-secondary: #4a4a4a;
   --color-text-inverse: #ffffff;
 
-  --color-border: #dbdbdb;
-  --color-border-strong: #c7c7c7;
+  --color-border: #b5b3b3;
+  --color-border-strong: #706f6f;
 
   --color-accent: #{$primary};
-  --color-accent-hover: darken($primary, 20%);
+  --color-accent-hover: #{darken($primary, 20%)};
 
   --color-navbar-separator: #00599b;
   --color-tooltip-bg: #555;
@@ -64,8 +63,6 @@ $toc-color-hover-dark: darken($primary, 20%);
   --bulma-hero-background-l: #{$primary-dark-l};
   --toc-color: #{$text-color-dark};
   --toc-color-hover: #{$toc-color-hover-dark};
-
-  /*****/
 
   --color-primary: #{$primary-dark};
 
