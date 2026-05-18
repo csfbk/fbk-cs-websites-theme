@@ -96,7 +96,7 @@ layout: default
             <div class="column is-12">
                 <h1 id="related-people" class="related in-toc">Involved People</h1>
                 {% assign details = "picture, email, phone, personalPage, website" | split: ", " %}
-                {% include list-people.html source=page.people style="card" details=details sort=page.peopleOrder %}
+                {% include list-people.html source=page.people style="card" details=details sort_by=page.peopleOrder %}
             </div>
         {% endif %}
     </div>

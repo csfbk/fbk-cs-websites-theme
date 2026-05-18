@@ -12,7 +12,7 @@ show_sidebar: false
         {% assign todayDate = "now" | date: "%Y-%m-%d %H:%M" %}
         {% if page.year %}
             {% assign internships = site.data.internships.projects | where_exp: "project", "project.year == page.year" | where_exp: "project", "project.applicationEnd < todayDate" %}
-            {% include list-internships.html source=internships sort="title" %}
+            {% include list-internships.html source=internships sort_by="title" %}
         {% else %}
             {% assign internships = site.data.internships.projects | where_exp: "project", "project.applicationEnd >= todayDate" %}
             {% if internships and internships.size > 0 %}

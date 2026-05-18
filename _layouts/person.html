@@ -67,7 +67,7 @@ layout: default
                         <h1>Publications</h1>
                         {% for group in publicationsByYear %}
                             <h4>{{ group.name }}</h4>
-                            {% include list-publications.html source=group.items sort="title" %}
+                            {% include list-publications.html source=group.items sort_by="title" %}
                         {% endfor %}
                     </section>
                 {% endif %}
@@ -102,11 +102,11 @@ layout: default
                         <h1>Projects</h1>
                         {% if currentProjects.size > 0 %}
                             <h4>Current</h4>
-                            {% include list-projects.html source=currentProjects sort="title" style="card" %}
+                            {% include list-projects.html source=currentProjects sort_by="title" style="card" %}
                         {% endif %}
                         {% if formerProjects.size > 0 %}
                             <h4>Former</h4>
-                            {% include list-projects.html source=formerProjects sort="title" style="card" %}
+                            {% include list-projects.html source=formerProjects sort_by="title" style="card" %}
                         {% endif %}
                     </section>
                 {% endif %}
@@ -124,7 +124,7 @@ layout: default
                                 <h4>{{ year }}</h4>
                                 {% assign seenYear = year %}
                             {% endif %}
-                            {% include list-dissemination.html source=group.items sort="title" style="list" %}
+                            {% include list-dissemination.html source=group.items sort_by="title" style="list" %}
                         {% endfor %}
                     </section>
                 {% endif %}
@@ -142,7 +142,7 @@ layout: default
                         <h1>Supervised Theses</h1>
                         {% for group in supervisedByYear %}
                             <h4>{{ group.name }}</h4>
-                            {% include list-theses.html source=group.items sort="title" %}
+                            {% include list-theses.html source=group.items sort_by="title" %}
                         {% endfor %}
                     </section>
                 {% endif %}
