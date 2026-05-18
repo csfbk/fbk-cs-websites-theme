@@ -92,25 +92,31 @@
             {%- endif -%}
 
 
-            {% assign descriptionParagraphs = "" | split: "" %}
+            {% assign descriptionParagraphs = nil %}
             {% if project.description %}
-                {% if project.description | first %}
-                    {% for description in project.description %}
-                        {% assign descriptionParagraphs = descriptionParagraphs | push: description %}
-                    {% endfor %}
-                {% else %}
-                    {% assign descriptionParagraphs = descriptionParagraphs | push: project.description %}
-                {% endif %}
+            {% capture newline %}
+{% endcapture %}
+
+            {% assign check_string = project.description | append: '' %}            
+            {% if project.description[0] %}
+                {% assign descriptionParagraphs = project.description %}
+            {% else %}
+                {% assign descriptionParagraphs = project.description | split: newline %}
+            {% endif %}
             {% endif %}
 
-            {%- assign descriptionString = nil -%}
-            {%- if descriptionParagraphs.size > 0 -%}
-                {% capture descriptionString %}
-                    {% for description in descriptionParagraphs %}
-                        <p>{{ description }}</p>
-                    {% endfor %}
-                {% endcapture %}
-            {%- endif -%}
+            {% assign descriptionString = nil %}
+            {% if descriptionParagraphs and descriptionParagraphs.size > 0 %}
+            {% capture descriptionString %}
+                {% for paragraph in descriptionParagraphs %}
+                {% assign cleanedParagraph = paragraph | strip %}
+                {% if cleanedParagraph != "" %}
+                    <p>{{ cleanedParagraph }}</p>
+                {% endif %}
+                {% endfor %}
+            {% endcapture %}
+            {% assign descriptionString = descriptionString | strip %}
+            {% endif %}
 
 
             {% assign objectives = "" | split: "" %}
