@@ -1,3 +1,11 @@
+# 1.2.0
+* Minor changes to style variables
+* Minor changes to style colors and rules
+* Adjust table styling
+* Fix sorting parameter in include calls
+* Update internship project include to handle new lines as different paragraphs in descriptions
+* Update internship include to support also single-link references
+
 # 1.1.0
 * Implement dedicated button in toolbar to toggle the theme
 * Improve styling for dark mode
