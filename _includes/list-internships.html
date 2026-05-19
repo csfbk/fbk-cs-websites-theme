@@ -234,7 +234,10 @@
                         {% for reference in references %}
                             {%- assign linksArray = "" | split: "" -%}
                             {%- assign linksString = nil -%}
-                            {%- if reference.links -%}
+                            {%- if reference.link -%}
+                                {%- assign string = '<a href="' | append: reference.link | append: '">' | append: "Link" | append: '</a>' -%}
+                                {%- assign linksArray = linksArray | push: string -%}
+                            {%- elsif reference.links -%}
                                 {%- for link in reference.links -%}
                                     {%- assign string = '<a href="' | append: link.url | append: '">' | append: link.name | append: '</a>' -%}
                                     {%- assign linksArray = linksArray | push: string -%}
