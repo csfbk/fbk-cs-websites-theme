@@ -167,7 +167,7 @@ if ($("#toc").length > 0) {
 
     $(":header:not(.no-toc)").each(function (index) {
       if ($(this).attr("id") == undefined) {
-        var id = $(this).text().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').toLowerCase();
+        var id = $(this).text().trim().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').toLowerCase();
         $(this).attr("id", id);
       }
 
@@ -254,6 +254,33 @@ if ($(".filter.filter-tag").length > 0) {
 if ($("ul.publications").length > 0) {
   updateNumberOfPublications();
 }
+
+// Collapsible boxes
+function updateCollapseButtonLabel($box) {
+  const $toggleButton = $box.find('.toggle-btn');
+  const buttonLabelToShow = $toggleButton.data('label-show') ?? 'Show more details';
+  const buttonLabelToHide = $toggleButton.data('label-hide') ?? 'Show less details';
+
+  if ($box.hasClass('box-collapsed')) {
+    $toggleButton.text(buttonLabelToShow);
+  } else {
+    $toggleButton.text(buttonLabelToHide);
+  }
+}
+
+$('.box.box-collapsible').each(function() {
+  updateCollapseButtonLabel($(this));
+});
+
+$('.toggle-btn').on('click', function() {
+  const $box = $(this).parent('.box.box-collapsible');
+  if ($box.hasClass('box-collapsed')) {
+    $box.removeClass('box-collapsed')
+  } else {
+    $box.addClass('box-collapsed');
+  }
+  updateCollapseButtonLabel($box);
+});
 
 // Theme toggle button
 initTheme();

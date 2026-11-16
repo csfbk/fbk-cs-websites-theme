@@ -18,6 +18,8 @@ $hero-darken: $dark !default;
 @import "functions";
 @import "settings/variables";
 @import "base/base";
+@import "components/boxes";
+@import "components/buttons";
 @import "components/cards";
 @import "components/d3graph";
 @import "components/hero";
