@@ -265,11 +265,11 @@
 
             <div class="column is-12">
                 <div class="university-project box box-collapsible box-collapsed">
-                    {% assign id = project.title | downcase | replace: " ", "-" %}
-                    <h2 class="box-title">
-                        {{ project.title }}
+                    <div class="is-flex is-align-items-center mb-3">
+                        {% assign id = project.title | downcase | replace: " ", "-" %}
+                        <h2 class="box-title mb-0 mr-2">{{ project.title }}</h2>
                         {% if units.size > 0 %}
-                            <span class="no-toc units">
+                            <span class="units">
                                 {% for unit in units %}
                                     {% if unit.website %}
                                         <a class="no-decoration" href="{{ unit.website }}">
@@ -282,7 +282,7 @@
                             </span>
                         {% endif %}
                         {% if project.available %}
-                            <span class="tooltip no-toc">
+                            <span class="tooltip">
                                 {% if project.available == "N" %}
                                     <span class="dot dot-red"></span>
                                     <span class="tooltip-text">Not available</span>
@@ -295,7 +295,7 @@
                                 {% endif %}
                             </span>
                         {% endif %}
-                    </h2>
+                    </div>
 
                     <button class="button is-small is-fullwidth toggle-btn">Display more details</button>
                     <div class="box-content mt-3">
