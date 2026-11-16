@@ -2,13 +2,17 @@
   line-height: 1;
   margin: 0;
   padding: 0;
-  list-style: none;  
+  list-style: none;
 
   a {
     border-radius: 2px;
     color: var(--color-text-primary);
     display: block;
     padding: 0.5em 0.75em;
+  }
+
+  ul {
+    list-style: none;
   }
 }
 
