@@ -44,6 +44,9 @@ $toc-color-hover-dark: darken($primary, 20%);
   --color-accent: #{$primary};
   --color-accent-hover: #{darken($primary, 20%)};
 
+  --color-button-bg-hover: var(--color-menu-hover);
+  --color-button-border-hover: var(--color-navbar-separator);
+
   --color-menu-active: #6cb2ff;
   --color-menu-hover: #6cb2ff;
 

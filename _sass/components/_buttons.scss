@@ -1,0 +1,10 @@
+.button {
+  transition: .5s;
+
+  &:hover, &.is-hovered {
+    color: inherit;
+    background-color: var(--color-button-bg-hover);
+    border-color: var(--color-button-border-hover);
+    transition: .5s;
+  }
+}

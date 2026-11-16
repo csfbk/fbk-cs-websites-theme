@@ -255,6 +255,33 @@ if ($("ul.publications").length > 0) {
   updateNumberOfPublications();
 }
 
+// Collapsible boxes
+function updateCollapseButtonLabel($box) {
+  const $toggleButton = $box.find('.toggle-btn');
+  const buttonLabelToShow = $toggleButton.data('label-show') ?? 'Show more details';
+  const buttonLabelToHide = $toggleButton.data('label-hide') ?? 'Show less details';
+
+  if ($box.hasClass('box-collapsed')) {
+    $toggleButton.text(buttonLabelToShow);
+  } else {
+    $toggleButton.text(buttonLabelToHide);
+  }
+}
+
+$('.box.box-collapsible').each(function() {
+  updateCollapseButtonLabel($(this));
+});
+
+$('.toggle-btn').on('click', function() {
+  const $box = $(this).parent('.box.box-collapsible');
+  if ($box.hasClass('box-collapsed')) {
+    $box.removeClass('box-collapsed')
+  } else {
+    $box.addClass('box-collapsed');
+  }
+  updateCollapseButtonLabel($box);
+});
+
 // Theme toggle button
 initTheme();
 
